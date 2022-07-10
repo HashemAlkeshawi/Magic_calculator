@@ -3,6 +3,8 @@ class Journal {
   String? content = '';
   DateTime? dateTime;
 
+  Journal(this.heading, this.content, this.dateTime);
+
   Journal.fromJson(Map map) {
     this.heading = map['heading'];
     this.content = map['content'];

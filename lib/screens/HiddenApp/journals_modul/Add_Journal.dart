@@ -2,33 +2,94 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_data.dart';
+import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
+
+import '../../../data/Journals.dart';
 
 class Add_Journal extends StatelessWidget {
   String date = DateFormat.yMMMEd().format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController heading = TextEditingController();
+    TextEditingController content = TextEditingController();
     double screenHight = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
         title: const Text("Journal"),
         backgroundColor: const Color(0xffFF7276),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.delete_forever,
-              color: Colors.white,
-            ),
-          ),
-        ],
+      ),
+      floatingActionButton: FloatingActionButton.large(
+        backgroundColor: const Color(0xff0BB300),
+        onPressed: () {
+          String headingText = heading.text;
+          String contentText = content.text;
+          if (headingText == '') {
+            if (contentText.length > 15) {
+              headingText = '${contentText.substring(0, 14)}...';
+            } else {
+              print(contentText.length);
+              headingText = 'No Heading';
+            }
+          }
+          Journal journal = Journal(headingText, contentText, DateTime.now());
+          journals_detailed.add(journal.toJson());
+          print(journals_detailed.length);
+          createList();
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => Journals_UI()));
+        },
+        child: Icon(
+          Icons.done,
+          color: Colors.white,
+          size: 50,
+        ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(vertical: 30, horizontal: 15),
+        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         child: ListView(shrinkWrap: true, children: [
-          Text(""),
-          Text(''),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey,
+                width: 0.5,
+              ),
+            ),
+            child: TextField(
+              controller: heading,
+              textCapitalization: TextCapitalization.words,
+              decoration: InputDecoration.collapsed(
+                hintText: 'Journal Heading..   << optional >>',
+                hintStyle: TextStyle(color: Colors.grey[500], fontSize: 14),
+              ),
+            ),
+          ),
+          Container(
+            width: screenHight / 2,
+            height: (screenHight - screenHight / 2.7),
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey,
+                width: 0.5,
+              ),
+            ),
+            child: TextField(
+              controller: content,
+              maxLength: 2000,
+              maxLines: null,
+              textCapitalization: TextCapitalization.sentences,
+              decoration: InputDecoration.collapsed(
+                hintText:
+                    'What\'s an adventure I had today..\nTap to start writing..',
+                hintStyle: TextStyle(color: Colors.grey[600]),
+              ),
+            ),
+          ),
         ]),
       ),
     );

@@ -12,94 +12,7 @@ Map<String, dynamic> journals = {
   'journals': journals_detailed,
 };
 
-List<Map<String, dynamic>> journals_detailed = [
-  {
-    'heading': 'the first',
-    'content': 'the first contentthe',
-    'datetime': DateTime(
-      2022,
-      7,
-      10,
-      10,
-      00,
-    )
-  },
-  {
-    'heading': 'the second',
-    'content': 'the second content',
-    'datetime': DateTime(2022, 7, 10)
-  },
-  {
-    'heading': 'the third',
-    'content': 'the third content',
-    'datetime': DateTime(2022, 7, 10),
-  },
-  {
-    'heading': 'the fourth',
-    'content': 'the fourth content',
-    'datetime': DateTime(2022, 7, 10)
-  },
-  {
-    'heading': 'the first',
-    'content': 'the first content',
-    'datetime': DateTime(2022, 7, 10)
-  },
-  {
-    'heading': 'the second',
-    'content': 'the second content',
-    'datetime': DateTime(2022, 7, 10)
-  },
-  {
-    'heading': 'the third',
-    'content': 'the third content',
-    'datetime': DateTime(2022, 7, 10),
-  },
-  {
-    'heading': 'the fourth',
-    'content': 'the fourth content',
-    'datetime': DateTime(2022, 7, 10)
-  },
-  {
-    'heading': 'the first',
-    'content': 'the first content',
-    'datetime': DateTime(2022, 7, 10)
-  },
-  {
-    'heading': 'the second',
-    'content': 'the second content',
-    'datetime': DateTime(2022, 7, 10)
-  },
-  {
-    'heading': 'the third',
-    'content': 'the third content',
-    'datetime': DateTime(2022, 7, 10),
-  },
-  {
-    'heading': 'the fourth',
-    'content': 'the fourth content',
-    'datetime': DateTime(2022, 7, 10)
-  },
-  {
-    'heading': 'the first',
-    'content': 'the first content',
-    'datetime': DateTime(2022, 7, 10)
-  },
-  {
-    'heading': 'the second',
-    'content': 'the second content',
-    'datetime': DateTime(2022, 7, 10)
-  },
-  {
-    'heading': 'the third',
-    'content': 'the third content',
-    'datetime': DateTime(2022, 7, 10),
-  },
-  {
-    'heading': 'the fourth',
-    'content': 'the fourth content',
-    'datetime': DateTime(2022, 7, 10)
-  },
-];
+List<Map<String, dynamic>> journals_detailed = [];
 
 Map<String, dynamic> notes = {
   'name': 'Note',
@@ -151,7 +64,10 @@ Map<String, dynamic> todos = {
   ],
 };
 
-List journals_ = journals['journals'];
+List<Journal>? JournalList;
 
-List<Journal> JournalList =
-    (journals_).map((e) => Journal.fromJson(e)).toList();
+void createList() {
+  List journals_ = journals['journals'];
+
+  JournalList = (journals_).map((e) => Journal.fromJson(e)).toList();
+}
