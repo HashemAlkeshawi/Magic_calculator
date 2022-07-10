@@ -8,4 +8,12 @@ class Journal {
     this.content = map['content'];
     this.dateTime = map['datetime'];
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'heading': this.heading,
+      'content': content,
+      'datetime': DateTime.now()
+    };
+  }
 }

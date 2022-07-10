@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
 import 'package:magic_calculator/screens/HiddenApp/notes_modul/Notes_UI.dart';
 import 'package:magic_calculator/screens/HiddenApp/tasks_modul/Tasks_UI.dart';
+import 'package:magic_calculator/screens/calculator.dart';
 import 'package:magic_calculator/widgets/Calculator.dart';
 
 class drawer extends StatelessWidget {
@@ -89,7 +90,7 @@ class drawer extends StatelessWidget {
                     IconButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Calculator()));
+                              builder: (context) => Magic_calculator()));
                         },
                         icon: Icon(
                           Icons.logout,

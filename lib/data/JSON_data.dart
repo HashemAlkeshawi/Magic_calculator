@@ -9,95 +9,97 @@ Map<String, dynamic> journals = {
   'color': const Color(0xffFF7276),
   'desc':
       'keep a record of your personal thoughts, feelings, insights, and more.',
-  'journals': <Map<String, dynamic>>[
-    {
-      'heading': 'the first',
-      'content': 'the first content',
-      'datetime': DateTime(
-        2022,
-        7,
-        10,
-        10,
-        00,
-      )
-    },
-    {
-      'heading': 'the second',
-      'content': 'the second content',
-      'datetime': DateTime(2022, 7, 10)
-    },
-    {
-      'heading': 'the third',
-      'content': 'the third content',
-      'datetime': DateTime(2022, 7, 10),
-    },
-    {
-      'heading': 'the fourth',
-      'content': 'the fourth content',
-      'datetime': DateTime(2022, 7, 10)
-    },
-    {
-      'heading': 'the first',
-      'content': 'the first content',
-      'datetime': DateTime(2022, 7, 10)
-    },
-    {
-      'heading': 'the second',
-      'content': 'the second content',
-      'datetime': DateTime(2022, 7, 10)
-    },
-    {
-      'heading': 'the third',
-      'content': 'the third content',
-      'datetime': DateTime(2022, 7, 10),
-    },
-    {
-      'heading': 'the fourth',
-      'content': 'the fourth content',
-      'datetime': DateTime(2022, 7, 10)
-    },
-    {
-      'heading': 'the first',
-      'content': 'the first content',
-      'datetime': DateTime(2022, 7, 10)
-    },
-    {
-      'heading': 'the second',
-      'content': 'the second content',
-      'datetime': DateTime(2022, 7, 10)
-    },
-    {
-      'heading': 'the third',
-      'content': 'the third content',
-      'datetime': DateTime(2022, 7, 10),
-    },
-    {
-      'heading': 'the fourth',
-      'content': 'the fourth content',
-      'datetime': DateTime(2022, 7, 10)
-    },
-    {
-      'heading': 'the first',
-      'content': 'the first content',
-      'datetime': DateTime(2022, 7, 10)
-    },
-    {
-      'heading': 'the second',
-      'content': 'the second content',
-      'datetime': DateTime(2022, 7, 10)
-    },
-    {
-      'heading': 'the third',
-      'content': 'the third content',
-      'datetime': DateTime(2022, 7, 10),
-    },
-    {
-      'heading': 'the fourth',
-      'content': 'the fourth content',
-      'datetime': DateTime(2022, 7, 10)
-    },
-  ],
+  'journals': journals_detailed,
 };
+
+List<Map<String, dynamic>> journals_detailed = [
+  {
+    'heading': 'the first',
+    'content': 'the first contentthe',
+    'datetime': DateTime(
+      2022,
+      7,
+      10,
+      10,
+      00,
+    )
+  },
+  {
+    'heading': 'the second',
+    'content': 'the second content',
+    'datetime': DateTime(2022, 7, 10)
+  },
+  {
+    'heading': 'the third',
+    'content': 'the third content',
+    'datetime': DateTime(2022, 7, 10),
+  },
+  {
+    'heading': 'the fourth',
+    'content': 'the fourth content',
+    'datetime': DateTime(2022, 7, 10)
+  },
+  {
+    'heading': 'the first',
+    'content': 'the first content',
+    'datetime': DateTime(2022, 7, 10)
+  },
+  {
+    'heading': 'the second',
+    'content': 'the second content',
+    'datetime': DateTime(2022, 7, 10)
+  },
+  {
+    'heading': 'the third',
+    'content': 'the third content',
+    'datetime': DateTime(2022, 7, 10),
+  },
+  {
+    'heading': 'the fourth',
+    'content': 'the fourth content',
+    'datetime': DateTime(2022, 7, 10)
+  },
+  {
+    'heading': 'the first',
+    'content': 'the first content',
+    'datetime': DateTime(2022, 7, 10)
+  },
+  {
+    'heading': 'the second',
+    'content': 'the second content',
+    'datetime': DateTime(2022, 7, 10)
+  },
+  {
+    'heading': 'the third',
+    'content': 'the third content',
+    'datetime': DateTime(2022, 7, 10),
+  },
+  {
+    'heading': 'the fourth',
+    'content': 'the fourth content',
+    'datetime': DateTime(2022, 7, 10)
+  },
+  {
+    'heading': 'the first',
+    'content': 'the first content',
+    'datetime': DateTime(2022, 7, 10)
+  },
+  {
+    'heading': 'the second',
+    'content': 'the second content',
+    'datetime': DateTime(2022, 7, 10)
+  },
+  {
+    'heading': 'the third',
+    'content': 'the third content',
+    'datetime': DateTime(2022, 7, 10),
+  },
+  {
+    'heading': 'the fourth',
+    'content': 'the fourth content',
+    'datetime': DateTime(2022, 7, 10)
+  },
+];
 
 Map<String, dynamic> notes = {
   'name': 'Note',
@@ -151,4 +153,5 @@ Map<String, dynamic> todos = {
 
 List journals_ = journals['journals'];
 
-List<Journal> JournalList = journals_.map((e) => Journal.fromJson(e)).toList();
+List<Journal> JournalList =
+    (journals_).map((e) => Journal.fromJson(e)).toList();
