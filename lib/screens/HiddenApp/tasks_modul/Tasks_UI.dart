@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../data/JSON_data.dart';
+import '../../../widgets/drawer.dart';
 
 class Tasks_UI extends StatelessWidget {
   String date = DateUtils.dateOnly(DateTime.now()).toString().substring(0, 10);
@@ -10,6 +11,15 @@ class Tasks_UI extends StatelessWidget {
     journals['journals'].add({'heading': "new"});
 
     // TODO: implement build
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("To Do"),
+        backgroundColor: Color(0xff8E8BFF),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
+        ],
+      ),
+      drawer: drawer(Color(0xaa8E8BFF)),
+    );
   }
 }

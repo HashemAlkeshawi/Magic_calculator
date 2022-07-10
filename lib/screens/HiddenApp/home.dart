@@ -10,7 +10,6 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     String journali = journals['date'].toString().substring(0, 10);
 
-    print(journali);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xff951BDB),

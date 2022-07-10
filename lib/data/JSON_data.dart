@@ -13,7 +13,13 @@ Map<String, dynamic> journals = {
     {
       'heading': 'the first',
       'content': 'the first content',
-      'datetime': DateTime(2022, 7, 10)
+      'datetime': DateTime(
+        2022,
+        7,
+        10,
+        10,
+        00,
+      )
     },
     {
       'heading': 'the second',
