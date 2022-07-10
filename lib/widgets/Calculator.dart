@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
-import '../screens/Hidden.dart';
+import '../screens/HiddenApp/home.dart';
 
 enum Operator { sum, sub, div, mult, equal }
 
@@ -22,6 +22,7 @@ class _CalculatorState extends State<Calculator> {
   List<dynamic> passEquation = ['3.15', '+', '2001'];
   @override
   Widget build(BuildContext context) {
+    setState(() {});
     return Container(
       margin: EdgeInsets.all(8),
       child: Column(
@@ -285,7 +286,7 @@ class _CalculatorState extends State<Calculator> {
     if (operation.toString() == passEquation.toString()) {
       operation.clear();
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => Hidden()));
+          .push(MaterialPageRoute(builder: (context) => Home()));
 
       print("Done!");
     } else if (operation.length == 1 || operation.length == 2) {
