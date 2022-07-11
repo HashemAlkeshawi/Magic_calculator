@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:magic_calculator/data/JSON_data.dart';
+import 'package:magic_calculator/data/JSON_FILS/Journal_JSON.dart';
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Edit_Journal.dart';
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
 

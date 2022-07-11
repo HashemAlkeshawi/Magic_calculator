@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:magic_calculator/data/Journals.dart';
+import '../dataClasses/Journals.dart';
 
 Map<String, dynamic> journals = {
   'name': 'Journal',
@@ -13,6 +13,15 @@ Map<String, dynamic> journals = {
 };
 
 List<Map<String, dynamic>> journals_detailed = [];
+
+List<Journal>? JournalList;
+
+void createJournalsList() {
+  List journals_ = journals['journals'];
+
+  JournalList = (journals_).map((e) => Journal.fromJson(e)).toList();
+  journals['date'] = DateTime.now();
+}
 
 Map<String, dynamic> notes = {
   'name': 'Note',
@@ -63,12 +72,3 @@ Map<String, dynamic> todos = {
     },
   ],
 };
-
-List<Journal>? JournalList;
-
-void createJournalsList() {
-  List journals_ = journals['journals'];
-
-  JournalList = (journals_).map((e) => Journal.fromJson(e)).toList();
-  journals['date'] = DateTime.now();
-}

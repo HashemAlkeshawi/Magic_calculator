@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data/JSON_data.dart';
+import '../../../data/JSON_FILS/Journal_JSON.dart';
 import '../../../widgets/drawer.dart';
 
 class Tasks_UI extends StatelessWidget {

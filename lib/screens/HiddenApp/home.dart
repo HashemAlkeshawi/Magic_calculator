@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
 import 'package:magic_calculator/screens/HiddenApp/tasks_modul/Tasks_UI.dart';
-import '../../data/JSON_data.dart';
+import '../../data/JSON_FILS/Journal_JSON.dart';
 import 'notes_modul/Notes_UI.dart';
 
 class Home extends StatelessWidget {
