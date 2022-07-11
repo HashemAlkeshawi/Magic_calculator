@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:magic_calculator/data/JSON_FILS/ToDo_JSON.dart';
 
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
 import 'package:magic_calculator/screens/HiddenApp/tasks_modul/Tasks_UI.dart';
 import '../../data/JSON_FILS/Journal_JSON.dart';
+import '../../data/JSON_FILS/Note_JSON.dart';
 import 'notes_modul/Notes_UI.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     createJournalsList();
-    String journali = journals['date'].toString().substring(0, 10);
+    createNotesList();
+    createTasksList();
+    // createTasksList();
 
     return Scaffold(
         appBar: AppBar(
@@ -51,7 +56,7 @@ class Home extends StatelessWidget {
                 })));
               },
               child: homeItem(
-                  todos,
+                  tasks,
                   Icon(
                     Icons.checklist,
                     size: 35,
@@ -94,7 +99,7 @@ class Home extends StatelessWidget {
                 style: TextStyle(fontSize: 11),
               ),
               Text(
-                map['date'].toString().substring(0, 10),
+                DateFormat.yMd().format(map['date']),
                 style: TextStyle(
                     fontSize: 13,
                     color: Colors.blue[900],
