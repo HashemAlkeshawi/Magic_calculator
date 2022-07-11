@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_data.dart';
+import 'package:magic_calculator/screens/HiddenApp/journals_modul/Edit_Journal.dart';
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
 
 class diary extends StatelessWidget {
@@ -15,6 +16,18 @@ class diary extends StatelessWidget {
     double screenHight = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xffFF7276),
+        onPressed: () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => Edit_Journal(index)));
+        },
+        child: Icon(
+          Icons.edit,
+          color: Colors.white,
+          size: 30,
+        ),
+      ),
       appBar: AppBar(
         title: const Text("Journal"),
         backgroundColor: const Color(0xffFF7276),
@@ -22,7 +35,7 @@ class diary extends StatelessWidget {
           IconButton(
             onPressed: () {
               journals_detailed.removeAt(index);
-              createList();
+              createJournalsList();
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => Journals_UI()));
             },

@@ -9,6 +9,7 @@ import 'package:magic_calculator/screens/HiddenApp/journals_modul/diary.dart';
 import '../../../data/Journals.dart';
 import '../../../widgets/drawer.dart';
 import 'Add_Journal.dart';
+import 'Edit_Journal.dart';
 
 class Journals_UI extends StatelessWidget {
   String date = DateFormat.yMMMEd().format(DateTime.now());
@@ -139,7 +140,13 @@ class Journals_UI extends StatelessWidget {
                           const SizedBox(
                             width: 4,
                           ),
-                          const Icon(Icons.edit),
+                          InkWell(
+                              splashColor: Colors.grey,
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => Edit_Journal(index)));
+                              },
+                              child: const Icon(Icons.edit)),
                         ],
                       ),
                     ),

@@ -1,19 +1,25 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_data.dart';
-import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
+import 'package:magic_calculator/screens/HiddenApp/journals_modul/diary.dart';
 
 import '../../../data/Journals.dart';
 
-class Add_Journal extends StatelessWidget {
+class Edit_Journal extends StatelessWidget {
   String date = DateFormat.yMMMEd().format(DateTime.now());
+
+  int index;
+
+  Edit_Journal(this.index);
 
   @override
   Widget build(BuildContext context) {
     TextEditingController heading = TextEditingController();
     TextEditingController content = TextEditingController();
     double screenHight = MediaQuery.of(context).size.height;
+
+    heading.text = JournalList![index].heading ?? '';
+    content.text = JournalList![index].content ?? '';
 
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -35,7 +41,7 @@ class Add_Journal extends StatelessWidget {
             }
           }
           Journal journal = Journal(headingText, contentText, DateTime.now());
-          journals_detailed.add(journal.toJson());
+          journals_detailed[index] = (journal.toJson());
           print(journals_detailed.length);
           createJournalsList();
           Navigator.of(context).pop();

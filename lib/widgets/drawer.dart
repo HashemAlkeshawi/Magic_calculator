@@ -14,7 +14,7 @@ class drawer extends StatelessWidget {
     return Theme(
         data: Theme.of(context).copyWith(canvasColor: color),
         child: Drawer(
-          width: 220,
+          width: 240,
           child: Container(
             margin: EdgeInsets.symmetric(vertical: 120),
             child: Column(
@@ -27,18 +27,21 @@ class drawer extends StatelessWidget {
                   },
                   title: Text(
                     "Journal",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   leading: CircleAvatar(
+                    radius: 25,
                     child: Icon(
                       Icons.book_outlined,
                       color: Colors.white,
+                      size: 30,
                     ),
                     backgroundColor: Color(0xffFF7276),
                   ),
                   trailing: Icon(
                     Icons.chevron_right,
                     color: Colors.white,
+                    size: 30,
                   ),
                 ),
                 ListTile(
@@ -48,18 +51,21 @@ class drawer extends StatelessWidget {
                   },
                   title: Text(
                     "Notes",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   leading: CircleAvatar(
+                    radius: 25,
                     child: Icon(
                       Icons.note_alt_outlined,
                       color: Colors.white,
+                      size: 30,
                     ),
                     backgroundColor: Color(0xff82E0C8),
                   ),
                   trailing: Icon(
                     Icons.chevron_right,
                     color: Colors.white,
+                    size: 30,
                   ),
                 ),
                 ListTile(
@@ -69,18 +75,21 @@ class drawer extends StatelessWidget {
                   },
                   title: Text(
                     "To-Do",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   leading: CircleAvatar(
+                    radius: 25,
                     child: Icon(
                       Icons.checklist,
                       color: Colors.white,
+                      size: 30,
                     ),
                     backgroundColor: Color(0xff8E8BFF),
                   ),
                   trailing: Icon(
                     Icons.chevron_right,
                     color: Colors.white,
+                    size: 30,
                   ),
                 ),
                 // Spacer(),

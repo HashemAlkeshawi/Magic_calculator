@@ -4,7 +4,7 @@ import 'package:magic_calculator/data/Journals.dart';
 
 Map<String, dynamic> journals = {
   'name': 'Journal',
-  'count': 0,
+  'count': journals_detailed.length,
   'date': DateTime(2022, 7, 9),
   'color': const Color(0xffFF7276),
   'desc':
@@ -66,8 +66,9 @@ Map<String, dynamic> todos = {
 
 List<Journal>? JournalList;
 
-void createList() {
+void createJournalsList() {
   List journals_ = journals['journals'];
 
   JournalList = (journals_).map((e) => Journal.fromJson(e)).toList();
+  journals['date'] = DateTime.now();
 }

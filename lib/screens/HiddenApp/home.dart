@@ -8,6 +8,7 @@ import 'notes_modul/Notes_UI.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    createJournalsList();
     String journali = journals['date'].toString().substring(0, 10);
 
     return Scaffold(
