@@ -11,11 +11,6 @@ import 'notes_modul/Notes_UI.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    createJournalsList();
-    createNotesList();
-    createTasksList();
-    // createTasksList();
-
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xff951BDB),

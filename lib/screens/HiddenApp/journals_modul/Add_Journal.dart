@@ -29,16 +29,20 @@ class Add_Journal extends StatelessWidget {
           if (headingText == '') {
             if (contentText.length > 15) {
               headingText = '${contentText.substring(0, 14)}...';
-            } else {
+            } else if (contentText.isNotEmpty) {
               print(contentText.length);
               headingText = 'No Heading';
             }
           }
-          Journal journal = Journal(headingText, contentText, DateTime.now());
-          journals_detailed.add(journal.toJson());
-          print(journals_detailed.length);
-          createJournalsList();
-          Navigator.of(context).pop();
+          if (headingText.isEmpty && contentText.isEmpty) {
+            Navigator.of(context).pop();
+          } else {
+            Journal journal = Journal(headingText, contentText, DateTime.now());
+            addJournal(journal);
+            // JournalList.add(journal);
+            print(JournalList.length);
+            Navigator.of(context).pop();
+          }
         },
         child: Icon(
           Icons.done,

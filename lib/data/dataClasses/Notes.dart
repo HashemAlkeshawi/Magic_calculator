@@ -15,7 +15,7 @@ class Note {
     return {
       'heading': heading,
       'content': content,
-      'datetime': DateTime.now(),
+      'date': DateTime.now(),
     };
   }
 }

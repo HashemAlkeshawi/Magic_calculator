@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_FILS/Journal_JSON.dart';
-import 'package:magic_calculator/screens/HiddenApp/journals_modul/diary.dart';
 
 import '../../../data/dataClasses/Journals.dart';
 
@@ -18,8 +17,8 @@ class Edit_Journal extends StatelessWidget {
     TextEditingController content = TextEditingController();
     double screenHight = MediaQuery.of(context).size.height;
 
-    heading.text = JournalList![index].heading ?? '';
-    content.text = JournalList![index].content ?? '';
+    heading.text = JournalList[index].heading ?? '';
+    content.text = JournalList[index].content ?? '';
 
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -41,12 +40,11 @@ class Edit_Journal extends StatelessWidget {
             }
           }
           Journal journal = Journal(headingText, contentText, DateTime.now());
-          journals_detailed[index] = (journal.toJson());
-          print(journals_detailed.length);
-          createJournalsList();
+          JournalList[index] = (journal);
+          print(JournalList.length);
           Navigator.of(context).pop();
         },
-        child: Icon(
+        child: const Icon(
           Icons.done,
           color: Colors.white,
           size: 50,

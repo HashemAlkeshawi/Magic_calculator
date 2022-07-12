@@ -17,14 +17,14 @@ class Edit_Note extends StatelessWidget {
     TextEditingController content = TextEditingController();
     double screenHight = MediaQuery.of(context).size.height;
 
-    heading.text = NoteList![index].heading ?? '';
-    content.text = NoteList![index].content ?? '';
+    heading.text = NoteList[index].heading ?? '';
+    content.text = NoteList[index].content ?? '';
 
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
         title: const Text("Note"),
-        backgroundColor: const Color(0xffFF7276),
+        backgroundColor: const Color(0xff82E0C8),
       ),
       floatingActionButton: FloatingActionButton.large(
         backgroundColor: const Color(0xff0BB300),
@@ -40,9 +40,7 @@ class Edit_Note extends StatelessWidget {
             }
           }
           Note note = Note(headingText, contentText, DateTime.now());
-          notes_detailed[index] = (note.toJson());
-          print(notes_detailed.length);
-          createNotesList();
+          NoteList[index] = (note);
           Navigator.of(context).pop();
         },
         child: Icon(

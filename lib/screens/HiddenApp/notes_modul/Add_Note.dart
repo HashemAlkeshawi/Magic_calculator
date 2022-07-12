@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -28,17 +27,19 @@ class Add_Note extends StatelessWidget {
           if (headingText == '') {
             if (contentText.length > 15) {
               headingText = '${contentText.substring(0, 14)}...';
-            } else {
+            } else if (contentText.isNotEmpty) {
               headingText = 'No Heading';
             }
           }
-          Note note = Note(headingText, contentText, DateTime.now());
-          notes_detailed.add(note.toJson());
-          print('Notes are: ${notes_detailed.length}');
-          createNotesList();
-          Navigator.of(context).pop();
+          if (headingText.isEmpty && contentText.isEmpty) {
+            Navigator.of(context).pop();
+          } else {
+            Note note = Note(headingText, contentText, DateTime.now());
+            NoteList.add(note);
+            Navigator.of(context).pop();
+          }
         },
-        child: Icon(
+        child: const Icon(
           Icons.done,
           color: Colors.white,
           size: 50,

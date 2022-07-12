@@ -1,13 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:magic_calculator/screens/HiddenApp/notes_modul/Add_Note.dart';
 
-import '../../../data/JSON_FILS/Journal_JSON.dart';
 import '../../../widgets/Note_item_ui.dart';
 import '../../../widgets/drawer.dart';
 
-class Notes_UI extends StatelessWidget {
+class Notes_UI extends StatefulWidget {
+  @override
+  State<Notes_UI> createState() => _Notes_UIState();
+}
+
+class _Notes_UIState extends State<Notes_UI> {
   String date = DateUtils.dateOnly(DateTime.now()).toString().substring(0, 10);
+
   @override
   Widget build(BuildContext context) {
     double screenHieght = MediaQuery.of(context).size.height;
@@ -46,22 +50,34 @@ class Notes_UI extends StatelessWidget {
         height: screenHieght,
         child: ListView(
           children: [
-            Row(
+            Wrap(
               children: [
                 const Text(
-                  "Hello, it is ",
+                  "The weakest ink is ",
                   style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
                   ),
                 ),
                 Text(
-                  date,
+                  'STRONGER ',
                   style: const TextStyle(
-                    fontSize: 18,
-                    color: Color(0xffFF7276),
+                    fontSize: 16,
+                    color: Color.fromARGB(255, 13, 176, 135),
                   ),
-                )
+                ),
+                const Text(
+                  "than the ",
+                  style: TextStyle(
+                    fontSize: 14,
+                  ),
+                ),
+                Text(
+                  'strongest memory..',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Color(0xff82E0C8),
+                  ),
+                ),
               ],
             ),
             NoteGridList(screenHieght),

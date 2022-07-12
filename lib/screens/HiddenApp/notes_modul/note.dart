@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -18,12 +17,12 @@ class note extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xffFF7276),
+        backgroundColor: Color(0xff82E0C8),
         onPressed: () {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => Edit_Note(index)));
         },
-        child: Icon(
+        child: const Icon(
           Icons.edit,
           color: Colors.white,
           size: 30,
@@ -31,12 +30,11 @@ class note extends StatelessWidget {
       ),
       appBar: AppBar(
         title: const Text("Note"),
-        backgroundColor: const Color(0xffFF7276),
+        backgroundColor: const Color(0xff82E0C8),
         actions: [
           IconButton(
             onPressed: () {
-              notes_detailed.removeAt(index);
-              createNotesList();
+              NoteList.removeAt(index);
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => Notes_UI()));
             },
@@ -53,18 +51,18 @@ class note extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 20.0),
             child: Text(
-              NoteList![index].heading!,
+              NoteList[index].heading!,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
           ),
-          Text(NoteList![index].content!),
+          Text(NoteList[index].content!),
           Divider(),
           Text(
-            '${DateFormat.jm().format(NoteList![index].dateTime!)} - ${DateFormat.yMMMMEEEEd().format(NoteList![index].dateTime!)}',
-            style: TextStyle(color: Color(0xffFF7276)),
+            '${DateFormat.jm().format(NoteList[index].dateTime!)} - ${DateFormat.yMMMMEEEEd().format(NoteList[index].dateTime!)}',
+            style: TextStyle(color: Color(0xff82E0C8)),
           ),
         ]),
       ),

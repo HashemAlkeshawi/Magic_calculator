@@ -9,16 +9,8 @@ Map<String, dynamic> notes = {
   'color': const Color(0xff82E0C8),
   'desc':
       'process information.know what to prioritize.learn more about a topic.Improve your organizational skills',
-  'Notes': notes_detailed,
 };
 
-List<Map<String, dynamic>> notes_detailed = [];
+List<Map<String, dynamic>> notesDetailed = [];
 
-List<Note>? NoteList;
-
-void createNotesList() {
-  List notes_ = notes['Notes'];
-
-  NoteList = (notes_).map((e) => Note.fromJson(e)).toList();
-  notes['date'] = DateTime.now();
-}
+List<Note> NoteList = (notesDetailed).map((e) => Note.fromJson(e)).toList();

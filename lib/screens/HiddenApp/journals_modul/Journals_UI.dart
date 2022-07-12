@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 
-import 'package:magic_calculator/data/JSON_FILS/Journal_JSON.dart';
-
+import '../../../data/JSON_FILS/Journal_JSON.dart';
 import '../../../widgets/Journal_item_ui.dart';
 import '../../../widgets/drawer.dart';
 import 'Add_Journal.dart';
@@ -15,7 +14,7 @@ class Journals_UI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenHight = MediaQuery.of(context).size.height;
-    print(journals_detailed.length);
+    print(JournalList.length);
 
     return Scaffold(
       appBar: AppBar(

@@ -10,11 +10,10 @@ import '../screens/HiddenApp/journals_modul/diary.dart';
 class journalsList extends StatelessWidget {
   double screenHieght;
   journalsList(this.screenHieght);
-  List l = [];
 
   @override
   Widget build(BuildContext context) {
-    return journals_detailed.isEmpty
+    return JournalList.isEmpty
         ? Container(
             height: screenHieght / 1.5,
             child: Lottie.asset('assets/animations/empty_journals.json'))
@@ -22,9 +21,9 @@ class journalsList extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 8),
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: (JournalList ?? l).length,
+            itemCount: (JournalList).length,
             itemBuilder: ((context, input) {
-              int index = JournalList!.length - (input + 1);
+              int index = JournalList.length - (input + 1);
               return GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -49,13 +48,13 @@ class journalsList extends StatelessWidget {
                     title: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 15.0),
                       child: Text(
-                        JournalList![index].heading!.length < 18
-                            ? JournalList![index].heading!
-                            : '${JournalList![index].heading!.substring(0, 17)}...',
+                        JournalList[index].heading!.length < 18
+                            ? JournalList[index].heading!
+                            : '${JournalList[index].heading!.substring(0, 17)}...',
                       ),
                     ),
                     subtitle: Text(
-                      DateFormat.yMMMd().format(JournalList![index].dateTime!),
+                      DateFormat.yMMMd().format(JournalList[index].dateTime!),
                       style: const TextStyle(color: const Color(0xffFF7276)),
                     ),
                     trailing: Container(
@@ -66,7 +65,7 @@ class journalsList extends StatelessWidget {
                         children: [
                           Text(
                             DateFormat.jm()
-                                .format(JournalList![index].dateTime!),
+                                .format(JournalList[index].dateTime!),
                             style: const TextStyle(
                                 fontSize: 11, fontWeight: FontWeight.w300),
                           ),

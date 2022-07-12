@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_FILS/Journal_JSON.dart';
@@ -34,8 +33,7 @@ class diary extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              journals_detailed.removeAt(index);
-              createJournalsList();
+              JournalList.removeAt(index);
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => Journals_UI()));
             },
@@ -52,17 +50,17 @@ class diary extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 20.0),
             child: Text(
-              JournalList![index].heading!,
+              JournalList[index].heading!,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
           ),
-          Text(JournalList![index].content!),
+          Text(JournalList[index].content!),
           Divider(),
           Text(
-            '${DateFormat.jm().format(JournalList![index].dateTime!)} - ${DateFormat.yMMMMEEEEd().format(JournalList![index].dateTime!)}',
+            '${DateFormat.jm().format(JournalList[index].dateTime!)} - ${DateFormat.yMMMMEEEEd().format(JournalList[index].dateTime!)}',
             style: TextStyle(color: Color(0xffFF7276)),
           ),
         ]),
