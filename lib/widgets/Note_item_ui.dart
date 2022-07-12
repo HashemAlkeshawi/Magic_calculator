@@ -33,80 +33,94 @@ class _NoteGridListState extends State<NoteGridList> {
             itemCount: noteList.length,
             itemBuilder: ((context, input) {
               int index = noteList.length - (input + 1);
-              return Stack(children: [
-                // SvgPicture.asset('assets/svgs/note.svg',
-                //     semanticsLabel: 'Acme Logo'),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => note(index)));
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(12),
-                    margin:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.grey,
-                          spreadRadius: 0.5,
-                          blurRadius: 5.5,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
-                      color: Colors.white,
-                    ),
-                    child: GridTile(
-                      footer: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              noteList.removeAt(index);
-                              setState(() {});
-                            },
-                            child: Icon(
-                              Icons.delete,
-                              color: Colors.grey,
-                              size: 24,
-                            ),
-                          )
+              return Stack(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => note(index)));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(12),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.grey,
+                            spreadRadius: 0.5,
+                            blurRadius: 5.5,
+                            offset: Offset(0, 3),
+                          ),
                         ],
+                        color: Colors.white,
                       ),
-                      child: Container(
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 6, vertical: 12),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      child: GridTile(
+                        footer: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
-                              noteList[index].heading!.length < 18
-                                  ? noteList[index].heading!
-                                  : '${noteList[index].heading!.substring(0, 17)}...',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
+                            InkWell(
+                              onTap: () {
+                                noteList.removeAt(index);
+                                setState(() {});
+                              },
+                              child: Icon(
+                                Icons.delete,
+                                color: Colors.grey,
+                                size: 24,
                               ),
-                            ),
-                            const Divider(
-                              color: null,
-                            ),
-                            Text(
-                              noteList[index].content!.length < 29
-                                  ? noteList[index].content!
-                                  : '${noteList[index].content!.substring(0, 30)}...',
-                              style: const TextStyle(
-                                fontSize: 11,
-                              ),
-                            ),
+                            )
                           ],
+                        ),
+                        child: Container(
+                          margin:
+                              EdgeInsets.symmetric(horizontal: 6, vertical: 12),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                noteList[index].heading!.length < 18
+                                    ? noteList[index].heading!
+                                    : '${noteList[index].heading!.substring(0, 17)}...',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                              ),
+                              const Divider(
+                                color: null,
+                              ),
+                              Text(
+                                noteList[index].content!.length < 29
+                                    ? noteList[index].content!
+                                    : '${noteList[index].content!.substring(0, 30)}...',
+                                style: const TextStyle(
+                                  fontSize: 11,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ]);
+                  Container(
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/svgs/note.svg',
+                          height: 30,
+                          width: 30,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              );
             }),
           );
   }
