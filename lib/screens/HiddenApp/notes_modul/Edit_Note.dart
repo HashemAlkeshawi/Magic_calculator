@@ -17,8 +17,8 @@ class Edit_Note extends StatelessWidget {
     TextEditingController content = TextEditingController();
     double screenHight = MediaQuery.of(context).size.height;
 
-    heading.text = NoteList[index].heading ?? '';
-    content.text = NoteList[index].content ?? '';
+    heading.text = noteList[index].heading ?? '';
+    content.text = noteList[index].content ?? '';
 
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -40,7 +40,7 @@ class Edit_Note extends StatelessWidget {
             }
           }
           Note note = Note(headingText, contentText, DateTime.now());
-          NoteList[index] = (note);
+          noteList[index] = (note);
           Navigator.of(context).pop();
         },
         child: Icon(

@@ -30,7 +30,6 @@ class Add_Journal extends StatelessWidget {
             if (contentText.length > 15) {
               headingText = '${contentText.substring(0, 14)}...';
             } else if (contentText.isNotEmpty) {
-              print(contentText.length);
               headingText = 'No Heading';
             }
           }

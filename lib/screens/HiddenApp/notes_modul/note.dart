@@ -34,7 +34,7 @@ class note extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              NoteList.removeAt(index);
+              noteList.removeAt(index);
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => Notes_UI()));
             },
@@ -51,17 +51,17 @@ class note extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 20.0),
             child: Text(
-              NoteList[index].heading!,
+              noteList[index].heading!,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
           ),
-          Text(NoteList[index].content!),
+          Text(noteList[index].content!),
           Divider(),
           Text(
-            '${DateFormat.jm().format(NoteList[index].dateTime!)} - ${DateFormat.yMMMMEEEEd().format(NoteList[index].dateTime!)}',
+            '${DateFormat.jm().format(noteList[index].dateTime!)} - ${DateFormat.yMMMMEEEEd().format(noteList[index].dateTime!)}',
             style: TextStyle(color: Color(0xff82E0C8)),
           ),
         ]),

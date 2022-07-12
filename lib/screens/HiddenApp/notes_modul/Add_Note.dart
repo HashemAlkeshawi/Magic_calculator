@@ -35,7 +35,7 @@ class Add_Note extends StatelessWidget {
             Navigator.of(context).pop();
           } else {
             Note note = Note(headingText, contentText, DateTime.now());
-            NoteList.add(note);
+            addNote(note);
             Navigator.of(context).pop();
           }
         },

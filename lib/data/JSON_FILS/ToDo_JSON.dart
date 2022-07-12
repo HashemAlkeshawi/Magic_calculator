@@ -9,16 +9,11 @@ Map<String, dynamic> tasks = {
   'color': const Color(0xff8E8BFF),
   'desc':
       'Make sure that your tasks are written down all in one place so you don\'t forget anything important.',
-  'tasks': tasks_detailed,
 };
 
-List<Map<String, dynamic>> tasks_detailed = [];
+List<Task> TasksList = [];
 
-List<Task>? TasksList;
-
-void createTasksList() {
-  List tasks_ = tasks['tasks'];
-
-  TasksList = (tasks_).map((e) => Task.fromJson(e)).toList();
+addTask(Task task) {
   tasks['date'] = DateTime.now();
+  TasksList.add(task);
 }

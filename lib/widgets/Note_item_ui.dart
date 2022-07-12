@@ -19,7 +19,7 @@ class _NoteGridListState extends State<NoteGridList> {
 
   @override
   Widget build(BuildContext context) {
-    return NoteList.isEmpty
+    return noteList.isEmpty
         ? Container(
             height: widget.screenHieght / 1.5,
             child: Lottie.asset('assets/animations/empty_note.json'))
@@ -29,9 +29,9 @@ class _NoteGridListState extends State<NoteGridList> {
             padding: const EdgeInsets.symmetric(vertical: 8),
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: NoteList.length,
+            itemCount: noteList.length,
             itemBuilder: ((context, input) {
-              int index = NoteList.length - (input + 1);
+              int index = noteList.length - (input + 1);
               return GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -54,24 +54,22 @@ class _NoteGridListState extends State<NoteGridList> {
                   child: GridTile(
                     header: Container(
                       child: Text(
-                        NoteList[index].content!.length < 29
-                            ? NoteList[index].content!
-                            : '${NoteList[index].content!.substring(0, 30)}...',
+                        noteList[index].content!.length < 29
+                            ? noteList[index].content!
+                            : '${noteList[index].content!.substring(0, 30)}...',
                       ),
                     ),
-                    child: Container(
-                      child: Text(
-                        NoteList[index].heading!.length < 18
-                            ? NoteList[index].heading!
-                            : '${NoteList[index].heading!.substring(0, 17)}...',
-                      ),
+                    child: Text(
+                      noteList[index].heading!.length < 18
+                          ? noteList[index].heading!
+                          : '${noteList[index].heading!.substring(0, 17)}...',
                     ),
                     footer: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         InkWell(
                           onTap: () {
-                            NoteList.removeAt(index);
+                            noteList.removeAt(index);
                             setState(() {});
                           },
                           child: Icon(

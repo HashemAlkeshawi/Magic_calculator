@@ -30,16 +30,6 @@ class Journals_UI extends StatelessWidget {
         onPressed: () {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => Add_Journal()));
-          // List<Map<String, dynamic>> temp = journals_detailed;
-          // Map<String, dynamic> entry = {
-          //   'heading': 'My custom',
-          //   'content': 'the new Custom contentthe',
-          //   'datetime': DateTime.now(),
-          // };
-          // print(temp.length);
-          // temp.add({...entry});
-
-          // journals['journals'] = [temp];
         },
         child: Icon(
           Icons.add,

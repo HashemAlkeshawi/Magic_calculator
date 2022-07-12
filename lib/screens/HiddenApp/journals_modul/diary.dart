@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_FILS/Journal_JSON.dart';
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Edit_Journal.dart';
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
+import 'package:magic_calculator/widgets/Journal_item_ui.dart';
 
 class diary extends StatelessWidget {
   String date = DateFormat.yMMMEd().format(DateTime.now());
@@ -13,6 +14,16 @@ class diary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenHight = MediaQuery.of(context).size.height;
+    String heading = '';
+    String content = '';
+    DateTime? dateTime = DateTime(1);
+    JournalList.isNotEmpty
+        ? {
+            dateTime = JournalList[index].dateTime!,
+            heading = JournalList[index].heading!,
+            content = JournalList[index].content!
+          }
+        : {};
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -50,17 +61,17 @@ class diary extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 20.0),
             child: Text(
-              JournalList[index].heading!,
+              heading,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
           ),
-          Text(JournalList[index].content!),
+          Text(content),
           Divider(),
           Text(
-            '${DateFormat.jm().format(JournalList[index].dateTime!)} - ${DateFormat.yMMMMEEEEd().format(JournalList[index].dateTime!)}',
+            '${DateFormat.jm().format(dateTime)} - ${DateFormat.yMMMMEEEEd().format(dateTime)}',
             style: TextStyle(color: Color(0xffFF7276)),
           ),
         ]),
