@@ -5,23 +5,33 @@ import '../../../data/dataClasses/Todos.dart';
 import '../../../widgets/Task_item_ui.dart';
 import '../../../widgets/drawer.dart';
 
-class Tasks_UI extends StatelessWidget {
+class Tasks_UI extends StatefulWidget {
+  @override
+  State<Tasks_UI> createState() => _Tasks_UIState();
+}
+
+class _Tasks_UIState extends State<Tasks_UI> {
   @override
   Widget build(BuildContext context) {
-    TasksList.add(Task('task2'));
-
     double screenHight = MediaQuery.of(context).size.height;
 
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text("To Do"),
-        backgroundColor: Color(0xff8E8BFF),
+        backgroundColor: const Color(0xff8E8BFF),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
         ],
       ),
-      drawer: drawer(Color(0xaa8E8BFF)),
+      drawer: drawer(const Color(0xaa8E8BFF)),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialogAdd(context);
+        },
+        backgroundColor: const Color(0xff8E8BFF),
+        child: const Icon(Icons.add),
+      ),
       body: Container(
         margin: const EdgeInsets.symmetric(vertical: 18, horizontal: 8),
         height: screenHight,
@@ -64,5 +74,51 @@ class Tasks_UI extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  showDialogAdd(BuildContext context) {
+    TextEditingController controller = TextEditingController();
+
+    String? task;
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Container(
+              child: Text("Add new Task..."),
+            ),
+            content: TextField(
+              controller: controller,
+            ),
+            actions: [
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
+                  child: Text(
+                    "Cancel",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  String taskString = controller.text;
+                  taskString.isNotEmpty ? addTask(Task(controller.text)) : {};
+                  Navigator.of(context).pop();
+                },
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
+                  child: Text(
+                    "Add",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              )
+            ],
+          );
+        });
   }
 }
