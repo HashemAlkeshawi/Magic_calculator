@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
 import 'package:magic_calculator/screens/HiddenApp/notes_modul/Notes_UI.dart';
 import 'package:magic_calculator/screens/HiddenApp/tasks_modul/Tasks_UI.dart';
 import 'package:magic_calculator/screens/calculator.dart';
-import 'package:magic_calculator/widgets/Calculator.dart';
+
+import '../screens/HiddenApp/home.dart';
 
 class drawer extends StatelessWidget {
   Color color;
@@ -93,20 +93,37 @@ class drawer extends StatelessWidget {
                   ),
                 ),
                 // Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Magic_calculator()));
-                        },
-                        icon: Icon(
-                          Icons.logout,
-                          size: 50,
-                          color: Colors.white,
-                        )),
-                  ],
+
+                ListTile(
+                  onTap: () {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) => Home()));
+                  },
+                  title: Text(
+                    "Apps",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  trailing: Icon(
+                    Icons.dashboard,
+                    size: 50,
+                    color: Colors.white,
+                  ),
+                ),
+
+                ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => Magic_calculator()));
+                  },
+                  title: Text(
+                    "Log Out",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  trailing: Icon(
+                    Icons.logout,
+                    size: 50,
+                    color: Colors.white,
+                  ),
                 ),
               ],
             ),

@@ -61,15 +61,25 @@ class _CalculatorState extends State<Calculator> {
                         child: ElevatedButton(
                           style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStateProperty.all(Color(0xff2310E8))),
+                                  MaterialStateProperty.all(Color(0xff945EDB))),
                           onPressed: () {
                             Clear();
                           },
-                          child: Row(
-                            children: [
-                              Icon(Icons.clear_all),
-                              Text("Clear"),
-                            ],
+                          child: const ListTile(
+                            // minLeadingWidth: 1,
+                            leading: Icon(
+                              Icons.clear_all,
+                              color: Colors.white,
+                              size: 45,
+                            ),
+                            title: Text(
+                              " Clear",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -101,8 +111,8 @@ class _CalculatorState extends State<Calculator> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           nomberButton(0),
-                          operatorButton(Operator.mult),
-                          operatorButton(Operator.div),
+                          nomberButton('.'),
+                          equalButton(),
                         ],
                       ),
                     ],
@@ -116,7 +126,8 @@ class _CalculatorState extends State<Calculator> {
                       backSpaceButton(),
                       operatorButton(Operator.sum),
                       operatorButton(Operator.sub),
-                      equalButton(),
+                      operatorButton(Operator.mult),
+                      operatorButton(Operator.div),
                     ],
                   ),
                 ),
@@ -153,10 +164,10 @@ class _CalculatorState extends State<Calculator> {
     return Container(
       margin: EdgeInsets.all(3),
       height: 60,
-      width: 75,
+      width: 80,
       child: ElevatedButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Color(0xff2310E8))),
+            backgroundColor: MaterialStateProperty.all(Color(0xff945EDB))),
         onPressed: () {
           if (widget.operation.length == 1 || widget.operation.isEmpty) {
             widget.First_index =
@@ -181,20 +192,26 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  Widget nomberButton(int nomber) {
+  Widget nomberButton(dynamic nomber) {
     return Container(
       margin: EdgeInsets.all(3),
       height: 70,
       width: 80,
       child: ElevatedButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Color(0xff6211F2))),
+            backgroundColor: MaterialStateProperty.all(Color(0xff0EC0F7))),
         onPressed: () {
           onNomberClicked(nomber);
           setState(() {});
         },
         child: Container(
-          child: Text("$nomber"),
+          child: Text(
+            "$nomber",
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ),
     );
@@ -204,16 +221,22 @@ class _CalculatorState extends State<Calculator> {
     return Container(
       margin: EdgeInsets.all(3),
       height: 70,
-      width: 75,
+      width: 80,
       child: ElevatedButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Color(0xff2310E8))),
+            backgroundColor: MaterialStateProperty.all(Color(0xff945EDB))),
         onPressed: () {
           onOperatorClicked(operator);
           setState(() {});
         },
         child: Container(
-          child: Text(operatorIcon(operator)),
+          child: Text(
+            operatorIcon(operator),
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ),
     );
@@ -265,8 +288,8 @@ class _CalculatorState extends State<Calculator> {
   Widget equalButton() {
     return Container(
       margin: EdgeInsets.all(3),
-      height: 146,
-      width: double.infinity,
+      height: 70,
+      width: 80,
       child: ElevatedButton(
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Color(0xff0BB300))),
@@ -275,7 +298,13 @@ class _CalculatorState extends State<Calculator> {
           setState(() {});
         },
         child: Container(
-          child: Text(operatorIcon(Operator.equal)),
+          child: Text(
+            operatorIcon(Operator.equal),
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ),
     );
@@ -291,23 +320,28 @@ class _CalculatorState extends State<Calculator> {
       print("Done!");
     } else if (operation.length == 1 || operation.length == 2) {
     } else if (operation.length == 3) {
-      if (operation[1] == "+") {
-        String temp = (sum(operation[0], operation[2]));
+      if (operation[0] == '.' || operation[2] == '.') {
         widget.operation.clear();
-        widget.operation.add(temp);
-      } else if (operation[1] == "-") {
-        String temp = (sub(operation[0], operation[2]));
-        widget.operation.clear();
-        widget.operation.add(temp);
-      } else if (operation[1] == "÷") {
-        String temp = (div(operation[0], operation[2]));
-        widget.operation.clear();
-        widget.operation.add(temp);
-      } else if (operation[1] == "×") {
-        String temp = (mult(operation[0], operation[2]));
-        widget.operation.clear();
-        widget.operation.add(temp);
-      } else {}
+        widget.operation.add("Invalid equation, Value of ' . '");
+      } else {
+        if (operation[1] == "+") {
+          String temp = (sum(operation[0], operation[2]));
+          widget.operation.clear();
+          widget.operation.add(temp);
+        } else if (operation[1] == "-") {
+          String temp = (sub(operation[0], operation[2]));
+          widget.operation.clear();
+          widget.operation.add(temp);
+        } else if (operation[1] == "÷") {
+          String temp = (div(operation[0], operation[2]));
+          widget.operation.clear();
+          widget.operation.add(temp);
+        } else if (operation[1] == "×") {
+          String temp = (mult(operation[0], operation[2]));
+          widget.operation.clear();
+          widget.operation.add(temp);
+        } else {}
+      }
     }
     widget.First_index = '';
     widget.Second_index = '';

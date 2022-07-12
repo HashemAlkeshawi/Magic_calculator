@@ -7,8 +7,14 @@ import '../../../widgets/Journal_item_ui.dart';
 import '../../../widgets/drawer.dart';
 import 'Add_Journal.dart';
 
-class Journals_UI extends StatelessWidget {
+class Journals_UI extends StatefulWidget {
+  @override
+  State<Journals_UI> createState() => _Journals_UIState();
+}
+
+class _Journals_UIState extends State<Journals_UI> {
   String date = DateFormat.yMMMEd().format(DateTime.now());
+
   List l = [];
 
   @override
@@ -21,7 +27,34 @@ class Journals_UI extends StatelessWidget {
         title: const Text("Journal"),
         backgroundColor: const Color(0xffFF7276),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
+                  onTap: () {
+                    JournalList.isNotEmpty
+                        ? {JournalList.clear(), setState(() {})}
+                        : {};
+                  },
+                  child: ListTile(
+                    minLeadingWidth: 5,
+                    leading: Icon(Icons.delete,
+                        color: JournalList.isNotEmpty
+                            ? Colors.grey[800]
+                            : Colors.grey[400]),
+                    title: Text(
+                      "Delete All",
+                      style: TextStyle(
+                          color: JournalList.isNotEmpty
+                              ? Colors.grey[800]
+                              : Colors.grey[500]),
+                    ),
+                  ),
+                ),
+              ];
+            },
+          ),
         ],
       ),
       drawer: drawer(const Color(0xaaFF7276)),

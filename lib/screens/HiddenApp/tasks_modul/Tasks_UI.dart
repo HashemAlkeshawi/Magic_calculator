@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:magic_calculator/data/JSON_FILS/ToDo_JSON.dart';
 
+import '../../../data/JSON_FILS/Note_JSON.dart';
 import '../../../data/dataClasses/Todos.dart';
 import '../../../widgets/Task_item_ui.dart';
 import '../../../widgets/drawer.dart';
@@ -21,7 +22,34 @@ class _Tasks_UIState extends State<Tasks_UI> {
         title: Text("To Do"),
         backgroundColor: const Color(0xff8E8BFF),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
+                  onTap: () {
+                    TasksList.isNotEmpty
+                        ? {TasksList.clear(), setState(() {})}
+                        : {};
+                  },
+                  child: ListTile(
+                    minLeadingWidth: 5,
+                    leading: Icon(Icons.delete,
+                        color: noteList.isNotEmpty
+                            ? Colors.grey[800]
+                            : Colors.grey[400]),
+                    title: Text(
+                      "Delete All",
+                      style: TextStyle(
+                          color: noteList.isNotEmpty
+                              ? Colors.grey[800]
+                              : Colors.grey[500]),
+                    ),
+                  ),
+                ),
+              ];
+            },
+          ),
         ],
       ),
       drawer: drawer(const Color(0xaa8E8BFF)),

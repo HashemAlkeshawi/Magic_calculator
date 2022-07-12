@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magic_calculator/data/JSON_FILS/Note_JSON.dart';
 import 'package:magic_calculator/screens/HiddenApp/notes_modul/Add_Note.dart';
 
 import '../../../widgets/Note_item_ui.dart';
@@ -20,7 +21,34 @@ class _Notes_UIState extends State<Notes_UI> {
         title: Text("Notes"),
         backgroundColor: Color(0xff82E0C8),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
+                  onTap: () {
+                    noteList.isNotEmpty
+                        ? {noteList.clear(), setState(() {})}
+                        : {};
+                  },
+                  child: ListTile(
+                    minLeadingWidth: 5,
+                    leading: Icon(Icons.delete,
+                        color: noteList.isNotEmpty
+                            ? Colors.grey[800]
+                            : Colors.grey[400]),
+                    title: Text(
+                      "Delete All",
+                      style: TextStyle(
+                          color: noteList.isNotEmpty
+                              ? Colors.grey[800]
+                              : Colors.grey[500]),
+                    ),
+                  ),
+                ),
+              ];
+            },
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
