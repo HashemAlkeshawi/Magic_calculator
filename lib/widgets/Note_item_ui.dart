@@ -49,8 +49,8 @@ class _NoteGridListState extends State<NoteGridList> {
                         boxShadow: const [
                           BoxShadow(
                             color: Colors.grey,
-                            spreadRadius: 0.5,
-                            blurRadius: 5.5,
+                            spreadRadius: 0,
+                            blurRadius: 5,
                             offset: Offset(0, 3),
                           ),
                         ],
@@ -106,15 +106,14 @@ class _NoteGridListState extends State<NoteGridList> {
                     ),
                   ),
                   Container(
-                    margin:
-                        const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+                    // margin:  const EdgeInsets.symmetric(vertical: 2, horizontal: 1),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         SvgPicture.asset(
                           'assets/svgs/note.svg',
                           height: 30,
-                          width: 30,
+                          width: 28,
                         ),
                       ],
                     ),

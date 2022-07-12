@@ -17,6 +17,7 @@ class _Notes_UIState extends State<Notes_UI> {
   Widget build(BuildContext context) {
     double screenHieght = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("Notes"),
         backgroundColor: Color(0xff82E0C8),
