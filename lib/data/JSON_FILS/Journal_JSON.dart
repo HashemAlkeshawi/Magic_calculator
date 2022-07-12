@@ -4,7 +4,6 @@ import '../dataClasses/Journals.dart';
 
 Map<String, dynamic> journals = {
   'name': 'Journal',
-  'count': JournalList.length,
   'date': DateTime.now(),
   'color': const Color(0xffFF7276),
   'desc':

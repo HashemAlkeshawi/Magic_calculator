@@ -4,7 +4,6 @@ import 'package:magic_calculator/data/dataClasses/Notes.dart';
 
 Map<String, dynamic> notes = {
   'name': 'Note',
-  'count': noteList.length,
   'date': DateTime.now(),
   'color': const Color(0xff82E0C8),
   'desc':

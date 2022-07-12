@@ -4,7 +4,6 @@ import '../dataClasses/Todos.dart';
 
 Map<String, dynamic> tasks = {
   'name': 'To-Do',
-  'count': 0,
   'date': DateTime.now(),
   'color': const Color(0xff8E8BFF),
   'desc':

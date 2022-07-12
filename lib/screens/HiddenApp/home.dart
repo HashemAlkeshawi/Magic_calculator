@@ -94,19 +94,7 @@ class Home extends StatelessWidget {
                 style: TextStyle(fontSize: 11),
               ),
               Text(
-                DateFormat.yMd().format(map['date']),
-                style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.blue[900],
-                    shadows: [Shadow(color: Colors.white, blurRadius: 1)]),
-              ),
-              Spacer(),
-              Text(
-                "Journals count: ",
-                style: TextStyle(fontSize: 11),
-              ),
-              Text(
-                map['count'].toString(),
+                DateFormat.yMMMMEEEEd().format(map['date']),
                 style: TextStyle(
                     fontSize: 13,
                     color: Colors.blue[900],
