@@ -1,5 +1,5 @@
 class Task {
-  String? task = '';
+  String task = '';
   bool isDone = false;
 
   Task(
@@ -11,10 +11,11 @@ class Task {
     isDone = map['isDone'];
   }
 
-  Map<String, dynamic> toJSON() {
-    return {
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> map = {
       'task': task,
       'isDone': isDone,
     };
+    return map;
   }
 }

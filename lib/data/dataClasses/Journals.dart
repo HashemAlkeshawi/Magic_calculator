@@ -6,16 +6,16 @@ class Journal {
   Journal(this.heading, this.content, this.dateTime);
 
   Journal.fromJson(Map map) {
-    this.heading = map['heading'];
-    this.content = map['content'];
-    this.dateTime = map['datetime'];
+    heading = map['heading'];
+    content = map['content'];
+    dateTime = map['datetime'];
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'heading': this.heading,
+      'heading': heading,
       'content': content,
-      'datetime': DateTime.now()
+      'date': DateTime.now(),
     };
   }
 }

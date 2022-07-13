@@ -66,9 +66,9 @@ class _tasksListState extends State<tasksList> {
                     title: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 15.0),
                       child: Text(
-                        TasksList[index].task!.length < 18
-                            ? TasksList[index].task!
-                            : '${TasksList[index].task!.substring(0, 17)}...',
+                        TasksList[index].task.length < 18
+                            ? TasksList[index].task
+                            : '${TasksList[index].task.substring(0, 17)}...',
                         style: TextStyle(
                             decoration: TasksList[index].isDone
                                 ? TextDecoration.lineThrough
@@ -112,7 +112,7 @@ class _tasksListState extends State<tasksList> {
 
   showDialogEdit(BuildContext context, int index) {
     TextEditingController controller = TextEditingController();
-    controller.text = TasksList[index].task ?? '';
+    controller.text = TasksList[index].task;
 
     showDialog(
         context: context,
