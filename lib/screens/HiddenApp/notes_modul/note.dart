@@ -7,7 +7,18 @@ import 'Edit_Note.dart';
 import 'Notes_UI.dart';
 
 class note extends StatelessWidget {
+  int? size;
   GlobalKey previewContainer = new GlobalKey();
+  shareScreen() {
+    ShareFilesAndScreenshotWidgets().shareScreenshot(
+      previewContainer,
+      size!,
+      "Share Note",
+      "Note.png",
+      "image/png",
+      text: "This is the Note!",
+    );
+  }
 
   String date = DateFormat.yMMMEd().format(DateTime.now());
 
@@ -17,6 +28,7 @@ class note extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenHight = MediaQuery.of(context).size.height;
+    size = screenHight.toInt();
 
     return Scaffold(
         floatingActionButton: FloatingActionButton(
@@ -37,23 +49,21 @@ class note extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
+                shareScreen();
+              },
+              icon: const Icon(
+                Icons.share,
+                color: Colors.white,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
                 noteList.removeAt(index);
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => Notes_UI()));
               },
               icon: const Icon(
                 Icons.delete_forever,
-                color: Colors.white,
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                ShareFilesAndScreenshotWidgets().shareScreenshot(
-                    previewContainer, 100, "Title", "Name.png", "image/png",
-                    text: "This is the caption!");
-              },
-              icon: const Icon(
-                Icons.share,
                 color: Colors.white,
               ),
             ),
@@ -66,7 +76,9 @@ class note extends StatelessWidget {
     return RepaintBoundary(
       key: previewContainer,
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 30, horizontal: 15),
+        height: double.infinity,
+        color: Colors.white,
+        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 15),
         child: ListView(shrinkWrap: true, children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 20.0),
@@ -81,7 +93,7 @@ class note extends StatelessWidget {
           Text(noteList[index].content!),
           Divider(),
           Text(
-            '${DateFormat.jm().format(noteList[index].dateTime!)} - ${DateFormat.yMMMMEEEEd().format(noteList[index].dateTime!)}',
+            '${DateFormat.jm().format(noteList[index].dateTime ?? DateTime.now())} - ${DateFormat.yMMMMEEEEd().format(noteList[index].dateTime ?? DateTime.now())}',
             style: TextStyle(color: Color(0xff82E0C8)),
           ),
         ]),

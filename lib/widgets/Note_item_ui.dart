@@ -62,6 +62,17 @@ class _NoteGridListState extends State<NoteGridList> {
                           children: [
                             InkWell(
                               onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => Edit_Note(index)));
+                              },
+                              child: Icon(
+                                Icons.edit,
+                                color: Colors.grey,
+                                size: 24,
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
                                 noteList.removeAt(index);
                                 setState(() {});
                               },
