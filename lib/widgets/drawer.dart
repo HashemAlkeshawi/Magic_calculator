@@ -22,7 +22,7 @@ class drawer extends StatelessWidget {
               children: [
                 ListTile(
                   onTap: () {
-                    Navigator.push(context,
+                    Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => Journals_UI()));
                   },
                   title: Text(
@@ -46,7 +46,7 @@ class drawer extends StatelessWidget {
                 ),
                 ListTile(
                   onTap: () {
-                    Navigator.push(context,
+                    Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => Notes_UI()));
                   },
                   title: Text(
@@ -70,7 +70,7 @@ class drawer extends StatelessWidget {
                 ),
                 ListTile(
                   onTap: () {
-                    Navigator.push(context,
+                    Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => Tasks_UI()));
                   },
                   title: Text(
@@ -112,7 +112,7 @@ class drawer extends StatelessWidget {
 
                 ListTile(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => Magic_calculator()));
                   },
                   title: Text(

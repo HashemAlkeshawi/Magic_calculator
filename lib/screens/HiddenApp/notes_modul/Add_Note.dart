@@ -14,11 +14,11 @@ class Add_Note extends StatelessWidget {
     double screenHight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
         title: const Text("Note"),
         backgroundColor: const Color(0xff82E0C8),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.large(
         backgroundColor: const Color(0xff0BB300),
         onPressed: () {
