@@ -1,4 +1,5 @@
 class Note {
+  int? id;
   String? heading = '';
   String? content = '';
   DateTime? dateTime;
@@ -6,16 +7,21 @@ class Note {
   Note(this.heading, this.content, this.dateTime);
 
   Note.fromJson(Map<String, dynamic> map) {
+    id = map['id'];
     heading = map['heading'];
     content = map['content'];
-    dateTime = map['date'];
+    dateTime = DateTime.parse(map['datetime']);
+  }
+
+  String datetime() {
+    return dateTime.toString();
   }
 
   Map<String, dynamic> toJson() {
     return {
       'heading': heading,
       'content': content,
-      'date': DateTime.now(),
+      'datetime': DateTime.now().toString(),
     };
   }
 }

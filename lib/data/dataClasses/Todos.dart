@@ -1,4 +1,5 @@
 class Task {
+  int? id;
   String task = '';
   bool isDone = false;
 
@@ -7,8 +8,9 @@ class Task {
   );
 
   Task.fromJson(Map<String, dynamic> map) {
+    id = map['id'];
     task = map['task'];
-    isDone = map['isDone'];
+    isDone = map['isDone'] == 0 ? false : true;
   }
 
   Map<String, dynamic> toMap() {

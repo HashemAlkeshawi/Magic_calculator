@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import '../dataBase/DataBase.dart';
 import '../dataClasses/Journals.dart';
 
 Map<String, dynamic> journals = {
@@ -7,26 +8,13 @@ Map<String, dynamic> journals = {
   'date': DateTime.now(),
   'color': const Color(0xffFF7276),
   'desc':
-      'keep a record of your personal thoughts, feelings, insights, and more.',
-  'journals': [
-    {
-      'heading': "First heading",
-      'content': "First Content",
-      'datetime': DateTime.now()
-    },
-    {
-      'heading': "Second heading",
-      'content': "Second Content",
-      'datetime': DateTime.now()
-    },
-  ],
+      'keep a record of your personal thoughts, feelings, insights, and more.'
 };
 
-List<Map<String, dynamic>> Journals = journals['journals'];
+List<Journal> JournalList = [];
 
-List<Journal> JournalList = Journals.map((e) => Journal.fromJson(e)).toList();
-
-addJournal(Journal journal) {
-  journals['date'] = DateTime.now();
-  JournalList.add(journal);
+getJournalsDataFromDB() async {
+  List<Map<String, dynamic>> Journals =
+      await magicDataBase().readData(tableName: Tables.journals);
+  JournalList = Journals.map((e) => Journal.fromJson(e)).toList();
 }

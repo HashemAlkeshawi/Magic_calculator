@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_FILS/Journal_JSON.dart';
+import 'package:magic_calculator/data/dataBase/DataBase.dart';
+import 'package:magic_calculator/widgets/Journal_item_ui.dart';
 
 import '../../../data/dataClasses/Journals.dart';
 
@@ -35,13 +37,15 @@ class Edit_Journal extends StatelessWidget {
             if (contentText.length > 15) {
               headingText = '${contentText.substring(0, 14)}...';
             } else {
-              print(contentText.length);
               headingText = 'No Heading';
             }
           }
           Journal journal = Journal(headingText, contentText, DateTime.now());
-          JournalList[index] = (journal);
-          print(JournalList.length);
+
+          magicDataBase().updateData(
+              table: Tables.journals, app: journal, id: JournalList[index].id!);
+          journalsList.onUpdate;
+
           Navigator.of(context).pop();
         },
         child: const Icon(

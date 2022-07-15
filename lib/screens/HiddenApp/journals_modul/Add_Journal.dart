@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_FILS/Journal_JSON.dart';
+import 'package:magic_calculator/data/dataBase/DataBase.dart';
+import 'package:magic_calculator/widgets/Journal_item_ui.dart';
 
 import '../../../data/dataClasses/Journals.dart';
 
@@ -35,9 +37,7 @@ class Add_Journal extends StatelessWidget {
             Navigator.of(context).pop();
           } else {
             Journal journal = Journal(headingText, contentText, DateTime.now());
-            addJournal(journal);
-            // JournalList.add(journal);
-            print(JournalList.length);
+            magicDataBase().addData(table: Tables.journals, app: journal);
             Navigator.of(context).pop();
           }
         },

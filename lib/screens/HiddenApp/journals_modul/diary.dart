@@ -44,7 +44,7 @@ class diary extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              JournalList.removeAt(index);
+              // JournalList.removeAt(index);
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => Journals_UI()));
             },

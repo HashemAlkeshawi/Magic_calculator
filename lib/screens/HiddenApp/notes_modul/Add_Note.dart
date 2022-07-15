@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../data/JSON_FILS/Note_JSON.dart';
+import '../../../data/dataBase/DataBase.dart';
 import '../../../data/dataClasses/Notes.dart';
 
 class Add_Note extends StatelessWidget {
@@ -35,7 +36,7 @@ class Add_Note extends StatelessWidget {
             Navigator.of(context).pop();
           } else {
             Note note = Note(headingText, contentText, DateTime.now());
-            addNote(note);
+            magicDataBase().addData(table: Tables.notes, app: note);
             Navigator.of(context).pop();
           }
         },

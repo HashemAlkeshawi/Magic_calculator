@@ -20,43 +20,43 @@ class _Journals_UIState extends State<Journals_UI> {
   @override
   Widget build(BuildContext context) {
     double screenHight = MediaQuery.of(context).size.height;
-    print(JournalList.length);
+    // print(JournalList.length);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Journal"),
-        backgroundColor: const Color(0xffFF7276),
-        actions: [
-          PopupMenuButton(
-            icon: const Icon(Icons.more_vert),
-            itemBuilder: (BuildContext context) {
-              return [
-                PopupMenuItem(
-                  onTap: () {
-                    JournalList.isNotEmpty
-                        ? {JournalList.clear(), setState(() {})}
-                        : {};
-                  },
-                  child: ListTile(
-                    minLeadingWidth: 5,
-                    leading: Icon(Icons.delete,
-                        color: JournalList.isNotEmpty
-                            ? Colors.grey[800]
-                            : Colors.grey[400]),
-                    title: Text(
-                      "Delete All",
-                      style: TextStyle(
-                          color: JournalList.isNotEmpty
-                              ? Colors.grey[800]
-                              : Colors.grey[500]),
-                    ),
-                  ),
-                ),
-              ];
-            },
-          ),
-        ],
-      ),
+          title: const Text("Journal"),
+          backgroundColor: const Color(0xffFF7276),
+          actions: [
+            //   PopupMenuButton(
+            //     icon: const Icon(Icons.more_vert),
+            //     itemBuilder: (BuildContext context) {
+            //       return [
+            //         PopupMenuItem(
+            //           onTap: () {
+            //             JournalList.isNotEmpty
+            //                 ? {JournalList.clear(), setState(() {})}
+            //                 : {};
+            //           },
+            //           child: ListTile(
+            //             minLeadingWidth: 5,
+            //             leading: Icon(Icons.delete,
+            //                 color: JournalList.isNotEmpty
+            //                     ? Colors.grey[800]
+            //                     : Colors.grey[400]),
+            //             title: Text(
+            //               "Delete All",
+            //               style: TextStyle(
+            //                   color: JournalList.isNotEmpty
+            //                       ? Colors.grey[800]
+            //                       : Colors.grey[500]),
+            //             ),
+            //           ),
+            //         ),
+            //       ];
+            //     },
+            //   ),
+            // ],
+          ]),
       drawer: drawer(const Color(0xaaFF7276)),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xffFF7276),

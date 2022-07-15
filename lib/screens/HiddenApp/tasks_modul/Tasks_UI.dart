@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:magic_calculator/data/JSON_FILS/ToDo_JSON.dart';
 
 import '../../../data/JSON_FILS/Note_JSON.dart';
+import '../../../data/dataBase/DataBase.dart';
 import '../../../data/dataClasses/Todos.dart';
 import '../../../widgets/Task_item_ui.dart';
 import '../../../widgets/drawer.dart';
@@ -134,7 +135,11 @@ class _Tasks_UIState extends State<Tasks_UI> {
               InkWell(
                 onTap: () {
                   String taskString = controller.text;
-                  taskString.isNotEmpty ? addTask(Task(controller.text)) : {};
+                  taskString.isNotEmpty
+                      ? magicDataBase()
+                          .addData(table: Tables.tasks, app: Task(taskString))
+                      : {};
+
                   Navigator.of(context).pop();
                 },
                 child: const Padding(
