@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_FILS/Journal_JSON.dart';
 import 'package:magic_calculator/data/dataBase/DataBase.dart';
-import 'package:magic_calculator/widgets/Journal_item_ui.dart';
 
 import '../../../data/dataClasses/Journals.dart';
 
@@ -44,7 +43,7 @@ class Edit_Journal extends StatelessWidget {
 
           magicDataBase().updateData(
               table: Tables.journals, app: journal, id: JournalList[index].id!);
-          journalsList.onUpdate;
+          getJournalsDataFromDB();
 
           Navigator.of(context).pop();
         },

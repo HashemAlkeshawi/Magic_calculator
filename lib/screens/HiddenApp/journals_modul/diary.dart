@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_FILS/Journal_JSON.dart';
+import 'package:magic_calculator/data/dataBase/DataBase.dart';
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Edit_Journal.dart';
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
-import 'package:magic_calculator/widgets/Journal_item_ui.dart';
 
 class diary extends StatelessWidget {
   String date = DateFormat.yMMMEd().format(DateTime.now());
@@ -44,6 +44,8 @@ class diary extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
+              magicDataBase().deleteData(
+                  table: Tables.journals, id: JournalList[index].id!);
               // JournalList.removeAt(index);
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => Journals_UI()));

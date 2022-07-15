@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magic_calculator/data/JSON_FILS/Note_JSON.dart';
+import 'package:magic_calculator/data/dataBase/DataBase.dart';
 import 'package:magic_calculator/screens/HiddenApp/notes_modul/Add_Note.dart';
 
 import '../../../widgets/Note_item_ui.dart';
@@ -29,7 +30,12 @@ class _Notes_UIState extends State<Notes_UI> {
                 PopupMenuItem(
                   onTap: () {
                     noteList.isNotEmpty
-                        ? {noteList.clear(), setState(() {})}
+                        ? {
+                            magicDataBase()
+                                .deleteTableData(table: Tables.notes),
+                            noteList.clear(),
+                            setState(() {})
+                          }
                         : {};
                   },
                   child: ListTile(
@@ -57,16 +63,6 @@ class _Notes_UIState extends State<Notes_UI> {
         onPressed: () {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => Add_Note()));
-          // List<Map<String, dynamic>> temp = journals_detailed;
-          // Map<String, dynamic> entry = {
-          //   'heading': 'My custom',
-          //   'content': 'the new Custom contentthe',
-          //   'datetime': DateTime.now(),
-          // };
-          // print(temp.length);
-          // temp.add({...entry});
-
-          // journals['journals'] = [temp];
         },
         child: Icon(
           Icons.add,

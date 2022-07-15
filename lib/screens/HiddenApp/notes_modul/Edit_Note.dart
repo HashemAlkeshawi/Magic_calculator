@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:magic_calculator/data/dataBase/DataBase.dart';
 
 import '../../../data/JSON_FILS/Note_JSON.dart';
 import '../../../data/dataClasses/Notes.dart';
@@ -40,7 +41,9 @@ class Edit_Note extends StatelessWidget {
             }
           }
           Note note = Note(headingText, contentText, DateTime.now());
-          noteList[index] = (note);
+          magicDataBase().updateData(
+              table: Tables.notes, app: note, id: noteList[index].id!);
+          getNotesDataFromDB();
           Navigator.of(context).pop();
         },
         child: Icon(

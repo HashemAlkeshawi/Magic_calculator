@@ -7,38 +7,32 @@ import '../data/dataBase/DataBase.dart';
 import '../screens/HiddenApp/journals_modul/Edit_Journal.dart';
 import '../screens/HiddenApp/journals_modul/diary.dart';
 
-class journalsList extends StatefulWidget {
+class journalsList extends StatelessWidget {
   double screenHieght;
   journalsList(this.screenHieght);
 
   @override
-  State<journalsList> createState() => _journalsListState();
-
-  static Function? onUpdate;
-}
-
-class _journalsListState extends State<journalsList> {
-  onUpdateOrDelete() => setState(() {});
-  @override
   Widget build(BuildContext context) {
-    journalsList.onUpdate = onUpdateOrDelete();
-
+    getJournalsDataFromDB();
     return FutureBuilder<List>(
         future: magicDataBase().readData(tableName: Tables.journals),
         builder: (context, snapshot) {
-          snapshot.hasData ? getJournalsDataFromDB() : {};
+          getJournalsDataFromDB();
           return JournalList.isNotEmpty
               ? ListView.builder(
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: (JournalList).length,
+                  itemCount: JournalList.length,
                   itemBuilder: ((context, input) {
                     int index = JournalList.length - (input + 1);
+
                     return GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => diary(index)));
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return diary(index);
+                        }));
                       },
                       child: Container(
                         height: 100,
@@ -104,7 +98,7 @@ class _journalsListState extends State<journalsList> {
                   }),
                 )
               : Container(
-                  height: widget.screenHieght / 1.5,
+                  height: screenHieght / 1.5,
                   child: Lottie.asset('assets/animations/empty_journals.json'));
         });
   }

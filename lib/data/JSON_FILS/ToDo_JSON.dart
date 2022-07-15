@@ -18,4 +18,14 @@ getTasksDataFromDB() async {
   List<Map<String, dynamic>> Tasks =
       await magicDataBase().readData(tableName: Tables.tasks);
   TasksList = Tasks.map((e) => Task.fromJson(e)).toList();
+
+  TasksList.sort(((a, b) {
+    if ((a.isDone! && b.isDone!) || (!a.isDone! && !b.isDone!)) {
+      return 0;
+    } else if (a.isDone! && !b.isDone!) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }));
 }

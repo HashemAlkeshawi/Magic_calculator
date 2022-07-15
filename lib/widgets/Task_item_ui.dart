@@ -18,17 +18,8 @@ class _tasksListState extends State<tasksList> {
     return FutureBuilder<List>(
         future: magicDataBase().readData(tableName: Tables.journals),
         builder: (context, snapshot) {
-          snapshot.hasData ? getTasksDataFromDB() : {};
+          getTasksDataFromDB();
 
-          TasksList.sort(((a, b) {
-            if ((a.isDone && b.isDone) || (!a.isDone && !b.isDone)) {
-              return 0;
-            } else if (a.isDone && !b.isDone) {
-              return -1;
-            } else {
-              return 1;
-            }
-          }));
           return TasksList.isEmpty
               ? Container(
                   height: widget.screenHieght / 1.5,
@@ -57,19 +48,23 @@ class _tasksListState extends State<tasksList> {
                       ),
                       child: InkWell(
                         onTap: () {
-                          TasksList[index].isDone = !TasksList[index].isDone;
+                          TasksList[index].isDone = !TasksList[index].isDone!;
+                          magicDataBase().updateData(
+                              table: Tables.tasks,
+                              app: TasksList[index],
+                              id: TasksList[index].id!);
+                          getTasksDataFromDB();
+
                           setState(() {});
                         },
                         child: ListTile(
-                          leading: Checkbox(
-                            hoverColor: Colors.red,
-                            activeColor: Colors.green,
-                            onChanged: (value) {
-                              TasksList[index].isDone =
-                                  !TasksList[index].isDone;
-                              setState(() {});
-                            },
-                            value: TasksList[index].isDone,
+                          leading: IgnorePointer(
+                            child: Checkbox(
+                              hoverColor: Colors.red,
+                              activeColor: Colors.green,
+                              onChanged: (value) {},
+                              value: TasksList[index].isDone,
+                            ),
                           ),
                           title: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 15.0),
@@ -78,7 +73,7 @@ class _tasksListState extends State<tasksList> {
                                   ? TasksList[index].task
                                   : '${TasksList[index].task.substring(0, 17)}...',
                               style: TextStyle(
-                                  decoration: TasksList[index].isDone
+                                  decoration: TasksList[index].isDone!
                                       ? TextDecoration.lineThrough
                                       : TextDecoration.none),
                             ),
@@ -100,7 +95,10 @@ class _tasksListState extends State<tasksList> {
                                 InkWell(
                                     splashColor: Colors.grey,
                                     onTap: () {
-                                      TasksList.removeAt(index);
+                                      magicDataBase().deleteData(
+                                          table: Tables.tasks,
+                                          id: TasksList[index].id!);
+
                                       setState(() {});
                                     },
                                     child: const Icon(
@@ -149,9 +147,11 @@ class _tasksListState extends State<tasksList> {
               InkWell(
                 onTap: () {
                   String taskString = controller.text;
-                  taskString.isNotEmpty
-                      ? TasksList[index] = (Task(controller.text))
-                      : {};
+                  Task task = TasksList[index];
+                  taskString.isNotEmpty ? task.task = taskString : {};
+                  magicDataBase().updateData(
+                      table: Tables.tasks, app: task, id: TasksList[index].id!);
+
                   setState(() {});
                   Navigator.of(context).pop();
                 },

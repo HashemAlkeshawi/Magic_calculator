@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:magic_calculator/data/dataBase/DataBase.dart';
 import 'package:share_files_and_screenshot_widgets/share_files_and_screenshot_widgets.dart';
 
 import '../../../data/JSON_FILS/Note_JSON.dart';
@@ -58,9 +59,10 @@ class note extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                noteList.removeAt(index);
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Notes_UI()));
+                magicDataBase()
+                    .deleteData(table: Tables.notes, id: noteList[index].id!);
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => Notes_UI()));
               },
               icon: const Icon(
                 Icons.delete_forever,

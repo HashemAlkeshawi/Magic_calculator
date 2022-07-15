@@ -107,38 +107,53 @@ class magicDataBase {
     switch (table) {
       case Tables.journals:
         Journal journal = app as Journal;
-        String values =
-            "'${journal.heading}' , '${journal.content}' , '${journal.datetime()}'";
-        String columns = "heading, content, datetime";
+
         Database? magicDB = await db;
-        int response = await magicDB!.rawInsert('''
+        int response = await magicDB!.rawUpdate('''
             UPDATE ${Tables.journals} SET heading = '${journal.heading}',
                                           content = '${journal.content}',
                                           datetime = '${journal.datetime()}'
             WHERE id = ${id};   
                                              ''');
-        List data = await readData(tableName: Tables.journals);
 
         return response;
+
       case Tables.notes:
         Note note = app as Note;
-        String values =
-            "'${note.heading}' , '${note.content}' , '${note.datetime()}'";
-        String columns = "heading, content, datetime";
+
         Database? magicDB = await db;
-        int response = await magicDB!.rawInsert(
-            "INSERT INTO ${Tables.notes}($columns) VALUES($values); ");
+        int response = await magicDB!.rawUpdate('''
+            UPDATE ${Tables.notes} SET heading = '${note.heading}',
+                                          content = '${note.content}',
+                                          datetime = '${note.datetime()}'
+            WHERE id = ${id};   
+                                             ''');
 
         return response;
       case Tables.tasks:
         Task task = app as Task;
-        String values = "'${task.task}'";
-        String columns = "task";
+
         Database? magicDB = await db;
-        int response = await magicDB!.rawInsert(
-            "INSERT INTO ${Tables.tasks}($columns) VALUES($values); ");
+        int response = await magicDB!.rawUpdate('''
+            UPDATE ${Tables.tasks} SET task = '${task.task}',
+                                          isDone = '${task.isdone()}'
+            WHERE id = ${id};   
+                                             ''');
 
         return response;
     }
+  }
+
+  deleteData({required String table, required int id}) async {
+    Database? magicDB = await db;
+    int response =
+        await magicDB!.rawDelete("DELETE FROM ${table} WHERE id = '${id}'; ");
+    return response;
+  }
+
+  deleteTableData({required String table}) async {
+    Database? magicDB = await db;
+    int response = await magicDB!.rawDelete("DELETE FROM ${table} ; ");
+    return response;
   }
 }

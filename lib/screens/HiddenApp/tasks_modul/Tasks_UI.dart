@@ -30,19 +30,24 @@ class _Tasks_UIState extends State<Tasks_UI> {
                 PopupMenuItem(
                   onTap: () {
                     TasksList.isNotEmpty
-                        ? {TasksList.clear(), setState(() {})}
+                        ? {
+                            magicDataBase()
+                                .deleteTableData(table: Tables.tasks),
+                            TasksList.clear(),
+                            setState(() {})
+                          }
                         : {};
                   },
                   child: ListTile(
                     minLeadingWidth: 5,
                     leading: Icon(Icons.delete,
-                        color: noteList.isNotEmpty
+                        color: TasksList.isNotEmpty
                             ? Colors.grey[800]
                             : Colors.grey[400]),
                     title: Text(
                       "Delete All",
                       style: TextStyle(
-                          color: noteList.isNotEmpty
+                          color: TasksList.isNotEmpty
                               ? Colors.grey[800]
                               : Colors.grey[500]),
                     ),

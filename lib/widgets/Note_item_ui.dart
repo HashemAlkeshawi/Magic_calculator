@@ -21,11 +21,11 @@ class _NoteGridListState extends State<NoteGridList> {
 
   @override
   Widget build(BuildContext context) {
+    getNotesDataFromDB();
     return FutureBuilder<List>(
       future: magicDataBase().readData(tableName: Tables.journals),
       builder: (context, snapshot) {
-        snapshot.hasData ? getNotesDataFromDB() : {};
-
+        // getNotesDataFromDB();
         return noteList.isNotEmpty
             ? GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -78,7 +78,9 @@ class _NoteGridListState extends State<NoteGridList> {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    noteList.removeAt(index);
+                                    magicDataBase().deleteData(
+                                        table: Tables.notes,
+                                        id: noteList[index].id!);
                                     setState(() {});
                                   },
                                   child: Icon(
