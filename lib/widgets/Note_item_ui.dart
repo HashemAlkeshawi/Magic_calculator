@@ -125,15 +125,19 @@ class _NoteGridListState extends State<NoteGridList> {
                       ),
                       Container(
                         // margin:  const EdgeInsets.symmetric(vertical: 2, horizontal: 1),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            SvgPicture.asset(
-                              'assets/svgs/note.svg',
-                              height: 30,
-                              width: 28,
-                            ),
-                          ],
+                        child: Localizations.override(
+                          context: context,
+                          locale: Locale('en'),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              SvgPicture.asset(
+                                'assets/svgs/note.svg',
+                                height: 30,
+                                width: 28,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

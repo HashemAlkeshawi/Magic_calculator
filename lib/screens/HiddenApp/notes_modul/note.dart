@@ -22,8 +22,6 @@ class note extends StatelessWidget {
     );
   }
 
-  String date = DateFormat.yMMMEd().format(DateTime.now());
-
   int index;
   note(this.index);
 
