@@ -1,10 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:magic_calculator/screens/calculator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+
+  List<String> passEquation = ['0', '0', '0'];
+
+  var sharedpreferences = await SharedPreferences.getInstance();
+  sharedpreferences.setStringList('passEquation', passEquation);
 
   runApp(EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],

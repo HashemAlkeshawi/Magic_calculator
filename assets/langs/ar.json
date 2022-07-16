@@ -1,4 +1,5 @@
 {
+    "App Name":"الحاسبة",
     "Magic Calculator" : "الحاسبة السحرية",
     "clear": "إفراغ ",
     "Home": "الرئيسية",
@@ -32,6 +33,12 @@
     "Task_wisdom_4": "مهمة",
     "change password": "تغيير معادلة المرور",
     "Dark Mood": "الوضع الليلي",
-    "Enter Old PassEquation" : "أدخل المعادلة الحالية.."
+    "Enter Old PassEquation" : "أدخل المعادلة الحالية..",
+    "Enter New PassEquation" : "أدخل المعادلة الجديدة..",
+    "First Number" : "الرقم الأول",
+    "Second Number" : "الرقم الثاني",
+    "Sign":"الإشارة",
+    "passEquation Changed" : "تم تغيير معادلة المرور بنجاح"
+
 
 }

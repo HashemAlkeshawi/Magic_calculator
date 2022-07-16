@@ -1,4 +1,5 @@
 {
+    "App Name":"Calculator",
     "Magic Calculator" : "Magic Calculator",
     "clear": " Clear",
     "Home": "Home",
@@ -33,6 +34,10 @@
     "Task_wisdom_4": "to Do It",
     "change password": "Change PassEquation",
     "Dark Mood": "Dark Mood",
-    "Enter Old PassEquation" : "ُEnter Old PassEquation.."
-
+    "Enter Old PassEquation" : "ُEnter Old PassEquation..",
+    "Enter New PassEquation" : "ُEnter New PassEquation..",
+    "First Number" : "First Number",
+    "Second Number" : "Second Number",
+    "Sign":"Sign",
+    "passEquation Changed" : "PassEquation Changed successfully!"
 }

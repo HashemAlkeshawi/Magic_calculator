@@ -1,7 +1,7 @@
-import 'dart:ffi';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:magic_calculator/screens/HiddenApp/Settings.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/HiddenApp/home.dart';
 
@@ -13,14 +13,13 @@ class Calculator extends StatefulWidget {
 
   Operator? operator;
 
-  List<dynamic> operation = [""];
+  List<dynamic> operation = ["0"];
 
   @override
   State<Calculator> createState() => _CalculatorState();
 }
 
 class _CalculatorState extends State<Calculator> {
-  List<dynamic> passEquation = ['3.15', '+', '2001'];
   @override
   Widget build(BuildContext context) {
     setState(() {});
@@ -261,7 +260,10 @@ class _CalculatorState extends State<Calculator> {
   }
 
   onNomberClicked(dynamic input) {
-    if (widget.operation.length == 1 || widget.operation.isEmpty) {
+    if (widget.operation.isEmpty) {
+      widget.First_index += '$input';
+      widget.operation.add(widget.First_index);
+    } else if (widget.operation.length == 1) {
       widget.First_index += '$input';
       widget.operation[0] = (widget.First_index);
     } else if (widget.operation.length == 2) {
@@ -283,9 +285,9 @@ class _CalculatorState extends State<Calculator> {
 
   String operatorIcon(Operator operator) {
     return operator == Operator.div
-        ? ('÷')
+        ? ('/')
         : operator == Operator.mult
-            ? ('×')
+            ? ('*')
             : operator == Operator.sub
                 ? ('-')
                 : operator == Operator.sum
@@ -320,14 +322,20 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  onequalClicked(List<dynamic> operation) {
-    print(passEquation.toString());
-    if (operation.toString() == passEquation.toString()) {
+  onequalClicked(List<dynamic> operation) async {
+    var pref = await SharedPreferences.getInstance();
+    String passEquation = pref.getStringList('passEquation').toString();
+    print(passEquation);
+    if (operation.toString() == passEquation) {
       operation.clear();
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => Home()));
 
       print("Done!");
+    } else if (operation.toString() == ['000'].toString()) {
+      operation.clear();
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Settings()));
     } else if (operation.length == 1 || operation.length == 2) {
     } else if (operation.length == 3) {
       if (operation[0] == '.' || operation[2] == '.') {
@@ -342,11 +350,11 @@ class _CalculatorState extends State<Calculator> {
           String temp = (sub(operation[0], operation[2]));
           widget.operation.clear();
           widget.operation.add(temp);
-        } else if (operation[1] == "÷") {
+        } else if (operation[1] == "/") {
           String temp = (div(operation[0], operation[2]));
           widget.operation.clear();
           widget.operation.add(temp);
-        } else if (operation[1] == "×") {
+        } else if (operation[1] == "*") {
           String temp = (mult(operation[0], operation[2]));
           widget.operation.clear();
           widget.operation.add(temp);
