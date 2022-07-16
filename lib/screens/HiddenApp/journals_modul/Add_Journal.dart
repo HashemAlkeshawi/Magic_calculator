@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_FILS/Journal_JSON.dart';
@@ -18,7 +19,7 @@ class Add_Journal extends StatelessWidget {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
-        title: const Text("Journal"),
+        title: Text("Journal_".tr()),
         backgroundColor: const Color(0xffFF7276),
       ),
       floatingActionButton: FloatingActionButton.large(
@@ -63,7 +64,7 @@ class Add_Journal extends StatelessWidget {
               controller: heading,
               textCapitalization: TextCapitalization.words,
               decoration: InputDecoration.collapsed(
-                hintText: 'Journal Heading..   << optional >>',
+                hintText: "Journal Heading".tr(),
                 hintStyle: TextStyle(color: Colors.grey[500], fontSize: 14),
               ),
             ),
@@ -84,8 +85,7 @@ class Add_Journal extends StatelessWidget {
               maxLines: null,
               textCapitalization: TextCapitalization.sentences,
               decoration: InputDecoration.collapsed(
-                hintText:
-                    'What\'s an adventure I had today..\nTap to start writing..',
+                hintText: "Journal_Content".tr(),
                 hintStyle: TextStyle(color: Colors.grey[600]),
               ),
             ),

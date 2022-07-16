@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_FILS/Journal_JSON.dart';
@@ -39,7 +40,7 @@ class diary extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
-        title: const Text("Journal"),
+        title: Text("Journal_".tr()),
         backgroundColor: const Color(0xffFF7276),
         actions: [
           IconButton(

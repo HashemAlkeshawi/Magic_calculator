@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -15,6 +16,7 @@ class tasksList extends StatefulWidget {
 class _tasksListState extends State<tasksList> {
   @override
   Widget build(BuildContext context) {
+    getTasksDataFromDB();
     return FutureBuilder<List>(
         future: magicDataBase().readData(tableName: Tables.journals),
         builder: (context, snapshot) {
@@ -126,7 +128,7 @@ class _tasksListState extends State<tasksList> {
         builder: (context) {
           return AlertDialog(
             title: Container(
-              child: Text("Edit Task..."),
+              child: Text("Edit Task".tr()),
             ),
             content: TextField(
               controller: controller,
@@ -136,10 +138,10 @@ class _tasksListState extends State<tasksList> {
                 onTap: () {
                   Navigator.of(context).pop();
                 },
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
                   child: Text(
-                    "Cancel",
+                    "Cancel".tr(),
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -155,10 +157,10 @@ class _tasksListState extends State<tasksList> {
                   setState(() {});
                   Navigator.of(context).pop();
                 },
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
                   child: Text(
-                    "Submit",
+                    "Submit".tr(),
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),

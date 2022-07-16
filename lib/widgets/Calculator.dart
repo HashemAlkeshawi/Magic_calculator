@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/HiddenApp/home.dart';
@@ -23,117 +24,126 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     setState(() {});
-    return Container(
-      margin: EdgeInsets.all(8),
-      child: Column(
+    return Localizations.override(
+      context: this.context,
+      locale: Locale('en'),
+      child: ListView(
         children: [
           Container(
-            alignment: Alignment.center,
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 45),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 1),
-              boxShadow: [
-                const BoxShadow(
-                  color: Colors.grey,
-                ),
-                const BoxShadow(
-                  color: Colors.white,
-                  spreadRadius: -1.0,
-                  blurRadius: 3.0,
-                ),
-              ],
-            ),
-            child: Screen(widget.operation),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 12),
-            width: double.infinity,
-            child: Row(
+            margin: EdgeInsets.all(8),
+            child: Column(
               children: [
-                Expanded(
-                  flex: 3,
-                  child: Column(
+                Container(
+                  alignment: Alignment.center,
+                  width: double.infinity,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 45),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey, width: 1),
+                    boxShadow: [
+                      const BoxShadow(
+                        color: Colors.grey,
+                      ),
+                      const BoxShadow(
+                        color: Colors.white,
+                        spreadRadius: -1.0,
+                        blurRadius: 3.0,
+                      ),
+                    ],
+                  ),
+                  child: Screen(widget.operation),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 12),
+                  width: double.infinity,
+                  child: Row(
                     children: [
-                      Container(
-                        margin: EdgeInsets.all(3),
-                        height: 60,
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Color(0xff945EDB))),
-                          onPressed: () {
-                            Clear();
-                          },
-                          child: const ListTile(
-                            // minLeadingWidth: 1,
-                            leading: Icon(
-                              Icons.clear_all,
-                              color: Colors.white,
-                              size: 45,
-                            ),
-                            title: Text(
-                              " Clear",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
+                      Expanded(
+                        flex: 3,
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.all(3),
+                              height: 60,
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Color(0xff945EDB))),
+                                onPressed: () {
+                                  Clear();
+                                },
+                                child: ListTile(
+                                  // minLeadingWidth: 1,
+                                  leading: Icon(
+                                    Icons.clear_all,
+                                    color: Colors.white,
+                                    size: 45,
+                                  ),
+                                  title: Text(
+                                    "clear".tr(),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                nomberButton(1),
+                                nomberButton(2),
+                                nomberButton(3),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                nomberButton(4),
+                                nomberButton(5),
+                                nomberButton(6),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                nomberButton(7),
+                                nomberButton(8),
+                                nomberButton(9),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                nomberButton(0),
+                                nomberButton('.'),
+                                equalButton(),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          nomberButton(1),
-                          nomberButton(2),
-                          nomberButton(3),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          nomberButton(4),
-                          nomberButton(5),
-                          nomberButton(6),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          nomberButton(7),
-                          nomberButton(8),
-                          nomberButton(9),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          nomberButton(0),
-                          nomberButton('.'),
-                          equalButton(),
-                        ],
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            backSpaceButton(),
+                            operatorButton(Operator.sum),
+                            operatorButton(Operator.sub),
+                            operatorButton(Operator.mult),
+                            operatorButton(Operator.div),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      backSpaceButton(),
-                      operatorButton(Operator.sum),
-                      operatorButton(Operator.sub),
-                      operatorButton(Operator.mult),
-                      operatorButton(Operator.div),
-                    ],
-                  ),
-                ),
+                )
               ],
             ),
-          )
+          ),
         ],
       ),
     );

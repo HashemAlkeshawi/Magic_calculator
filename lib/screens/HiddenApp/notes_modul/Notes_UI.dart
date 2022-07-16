@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:magic_calculator/data/JSON_FILS/Note_JSON.dart';
 import 'package:magic_calculator/data/dataBase/DataBase.dart';
@@ -20,7 +21,7 @@ class _Notes_UIState extends State<Notes_UI> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Notes"),
+        title: Text("Notes".tr()),
         backgroundColor: Color(0xff82E0C8),
         actions: [
           PopupMenuButton(
@@ -45,7 +46,7 @@ class _Notes_UIState extends State<Notes_UI> {
                             ? Colors.grey[800]
                             : Colors.grey[400]),
                     title: Text(
-                      "Delete All",
+                      "Delete All".tr(),
                       style: TextStyle(
                           color: noteList.isNotEmpty
                               ? Colors.grey[800]
@@ -77,28 +78,28 @@ class _Notes_UIState extends State<Notes_UI> {
           children: [
             Wrap(
               children: [
-                const Text(
-                  "The weakest ink is ",
+                Text(
+                  "Note_wisdom_1".tr(),
                   style: TextStyle(
                     fontSize: 14,
                   ),
                 ),
                 Text(
-                  'STRONGER ',
+                  "Note_wisdom_2".tr(),
                   style: const TextStyle(
                     fontSize: 16,
                     color: Color.fromARGB(255, 13, 176, 135),
                   ),
                 ),
-                const Text(
-                  "than the ",
+                Text(
+                  "Note_wisdom_3".tr(),
                   style: TextStyle(
                     fontSize: 14,
                   ),
                 ),
                 Text(
-                  'strongest memory..',
-                  style: const TextStyle(
+                  "Note_wisdom_4".tr(),
+                  style: TextStyle(
                     fontSize: 16,
                     color: Color(0xff82E0C8),
                   ),

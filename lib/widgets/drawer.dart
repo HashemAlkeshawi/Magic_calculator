@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:magic_calculator/screens/HiddenApp/Settings.dart';
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
 import 'package:magic_calculator/screens/HiddenApp/notes_modul/Notes_UI.dart';
 import 'package:magic_calculator/screens/HiddenApp/tasks_modul/Tasks_UI.dart';
@@ -14,7 +16,7 @@ class drawer extends StatelessWidget {
     return Theme(
         data: Theme.of(context).copyWith(canvasColor: color),
         child: Drawer(
-          width: 240,
+          width: 250,
           child: Container(
             margin: EdgeInsets.symmetric(vertical: 120),
             child: Column(
@@ -26,7 +28,7 @@ class drawer extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => Journals_UI()));
                   },
                   title: Text(
-                    "Journal",
+                    "Journal".tr(),
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   leading: CircleAvatar(
@@ -50,7 +52,7 @@ class drawer extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => Notes_UI()));
                   },
                   title: Text(
-                    "Notes",
+                    "Notes".tr(),
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   leading: CircleAvatar(
@@ -74,7 +76,7 @@ class drawer extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => Tasks_UI()));
                   },
                   title: Text(
-                    "To-Do",
+                    "To-Do".tr(),
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   leading: CircleAvatar(
@@ -100,7 +102,7 @@ class drawer extends StatelessWidget {
                         .push(MaterialPageRoute(builder: (context) => Home()));
                   },
                   title: Text(
-                    "Apps",
+                    "Apps".tr(),
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   trailing: Icon(
@@ -112,11 +114,27 @@ class drawer extends StatelessWidget {
 
                 ListTile(
                   onTap: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => Settings()));
+                  },
+                  title: Text(
+                    "Settings".tr(),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  trailing: Icon(
+                    Icons.settings,
+                    size: 50,
+                    color: Colors.white,
+                  ),
+                ),
+
+                ListTile(
+                  onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => Magic_calculator()));
                   },
                   title: Text(
-                    "Log Out",
+                    "Log Out".tr(),
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   trailing: Icon(

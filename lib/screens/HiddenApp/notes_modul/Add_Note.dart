@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -16,7 +17,7 @@ class Add_Note extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Note"),
+        title: Text("Note".tr()),
         backgroundColor: const Color(0xff82E0C8),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -62,7 +63,7 @@ class Add_Note extends StatelessWidget {
               controller: heading,
               textCapitalization: TextCapitalization.words,
               decoration: InputDecoration.collapsed(
-                hintText: 'Note Heading..',
+                hintText: "Note Heading".tr(),
                 hintStyle: TextStyle(color: Colors.grey[500], fontSize: 14),
               ),
             ),
@@ -82,7 +83,7 @@ class Add_Note extends StatelessWidget {
               maxLines: null,
               textCapitalization: TextCapitalization.sentences,
               decoration: InputDecoration.collapsed(
-                hintText: 'Tap to start writing..',
+                hintText: "Note_Content".tr(),
                 hintStyle: TextStyle(color: Colors.grey[500]),
               ),
             ),

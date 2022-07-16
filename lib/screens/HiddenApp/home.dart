@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_FILS/ToDo_JSON.dart';
@@ -14,7 +15,7 @@ class Home extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xff951BDB),
-          title: const Text("Home"),
+          title: Text('Home'.tr()),
         ),
         body: ListView(
           children: [
@@ -79,7 +80,7 @@ class Home extends StatelessWidget {
           Row(
             children: [
               Text(
-                map['name'],
+                '${map['name']}'.tr(),
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Spacer(),

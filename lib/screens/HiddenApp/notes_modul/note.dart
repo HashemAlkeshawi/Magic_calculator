@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/dataBase/DataBase.dart';
@@ -45,7 +46,7 @@ class note extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
-          title: const Text("Note"),
+          title: Text("Note".tr()),
           backgroundColor: const Color(0xff82E0C8),
           actions: [
             IconButton(

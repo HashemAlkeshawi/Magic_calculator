@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:magic_calculator/data/JSON_FILS/ToDo_JSON.dart';
 
@@ -20,7 +21,7 @@ class _Tasks_UIState extends State<Tasks_UI> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("To Do"),
+        title: Text("To-Do".tr()),
         backgroundColor: const Color(0xff8E8BFF),
         actions: [
           PopupMenuButton(
@@ -45,7 +46,7 @@ class _Tasks_UIState extends State<Tasks_UI> {
                             ? Colors.grey[800]
                             : Colors.grey[400]),
                     title: Text(
-                      "Delete All",
+                      "Delete All".tr(),
                       style: TextStyle(
                           color: TasksList.isNotEmpty
                               ? Colors.grey[800]
@@ -73,31 +74,31 @@ class _Tasks_UIState extends State<Tasks_UI> {
           children: [
             Wrap(
               children: [
-                const Text(
-                  "The most effective way to ",
+                Text(
+                  "Task_wisdom_1".tr(),
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  'do it',
+                  "Task_wisdom_2".tr(),
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     color: Color(0xff4F8AFF),
                   ),
                 ),
-                const Text(
-                  "is ",
+                Text(
+                  "Task_wisdom_3".tr(),
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  'to Do it',
+                  "Task_wisdom_4".tr(),
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     color: Color(0xff8E8BFF),
                   ),
                 ),
@@ -119,7 +120,7 @@ class _Tasks_UIState extends State<Tasks_UI> {
         builder: (context) {
           return AlertDialog(
             title: Container(
-              child: Text("Add new Task..."),
+              child: Text("Add new task".tr()),
             ),
             content: TextField(
               controller: controller,
@@ -129,10 +130,10 @@ class _Tasks_UIState extends State<Tasks_UI> {
                 onTap: () {
                   Navigator.of(context).pop();
                 },
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
                   child: Text(
-                    "Cancel",
+                    "Cancel".tr(),
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -147,10 +148,10 @@ class _Tasks_UIState extends State<Tasks_UI> {
 
                   Navigator.of(context).pop();
                 },
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
                   child: Text(
-                    "Add",
+                    "Add".tr(),
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),

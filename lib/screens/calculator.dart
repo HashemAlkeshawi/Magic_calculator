@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/Calculator.dart';
@@ -8,7 +9,7 @@ class Magic_calculator extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff951BDB),
-        title: const Text("Magic Calculator"),
+        title: Text('Magic Calculator'.tr()),
       ),
       body: Calculator(),
     );

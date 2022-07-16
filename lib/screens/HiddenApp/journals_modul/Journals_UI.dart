@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
@@ -22,10 +23,11 @@ class _Journals_UIState extends State<Journals_UI> {
   Widget build(BuildContext context) {
     double screenHight = MediaQuery.of(context).size.height;
     // print(JournalList.length);
+    String Hello = "${'Hello,'.tr()} ${'it is'.tr()}";
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Journal"),
+        title: Text("Journal".tr()),
         backgroundColor: const Color(0xffFF7276),
         actions: [
           PopupMenuButton(
@@ -50,7 +52,7 @@ class _Journals_UIState extends State<Journals_UI> {
                             ? Colors.grey[800]
                             : Colors.grey[400]),
                     title: Text(
-                      "Delete All",
+                      'Delete All'.tr(),
                       style: TextStyle(
                           color: JournalList.isNotEmpty
                               ? Colors.grey[800]
@@ -82,8 +84,8 @@ class _Journals_UIState extends State<Journals_UI> {
           children: [
             Row(
               children: [
-                const Text(
-                  "Hello, it is ",
+                Text(
+                  Hello,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
