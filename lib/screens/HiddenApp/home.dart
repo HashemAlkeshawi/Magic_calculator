@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_FILS/ToDo_JSON.dart';
+import 'package:magic_calculator/screens/HiddenApp/Settings.dart';
 
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
 import 'package:magic_calculator/screens/HiddenApp/tasks_modul/Tasks_UI.dart';
@@ -14,6 +15,15 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Settings()));
+              },
+            ),
+          ],
           backgroundColor: Color(0xff951BDB),
           title: Text('Home'.tr()),
         ),

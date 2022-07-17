@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:magic_calculator/screens/HiddenApp/intro_Screens/intro_Screen.dart';
 import 'package:magic_calculator/screens/calculator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,7 +11,6 @@ void main() async {
   List<String> passEquation = ['0', '0', '0'];
 
   var sharedpreferences = await SharedPreferences.getInstance();
-  print(sharedpreferences.getStringList('passEquation'));
 
   sharedpreferences.getStringList('passEquation') ??
       sharedpreferences.setStringList('passEquation', passEquation);
@@ -39,7 +39,7 @@ class App extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      home: Magic_calculator(),
+      home: intro_Screen(), // Magic_calculator(),
     );
   }
 }

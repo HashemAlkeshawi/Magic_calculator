@@ -36,8 +36,20 @@
     "Dark Mood": "Dark Mood",
     "Enter Old PassEquation" : "ُEnter Old PassEquation..",
     "Enter New PassEquation" : "ُEnter New PassEquation..",
+    "setEquation" : "Set PassEquation",
     "First Number" : "First Number",
     "Second Number" : "Second Number",
     "Sign":"Sign",
-    "passEquation Changed" : "PassEquation Changed successfully!"
+    "passEquation Changed" : "PassEquation Changed successfully!",
+    "passEquation seted" : "PassEquation added suxxessfully!",
+
+    "page_1_body" : "Magic Calculator is a full functional Calculator",
+    "page_2_body" : "When a pre-defined Equation entered, a hidden app opens",
+    "page_3_body" : "Journals writing, Note Taking and To-Do app are in one place",
+    "page_4_rule_1" : "Note that if you lost this equation You can not reset it.",
+    "page_4_rule_2" : "You have to follow the form {Number, operation, Number}",
+    "page_4_rule_3" : "The numbers must be positive, may include decimal point",
+    "page_4_rule_4" : "The Sign must be one of the four operations {+ , - , / , * }",
+    "page_4_rule_5" : "You can always open settings by enter three zeros..  '000'"
+
 }

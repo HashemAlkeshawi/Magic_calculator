@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/Calculator.dart';
+import 'HiddenApp/intro_Screens/intro_Screen.dart';
 
 class Magic_calculator extends StatelessWidget {
   @override
