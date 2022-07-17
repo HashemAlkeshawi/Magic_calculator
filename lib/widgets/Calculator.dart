@@ -132,8 +132,8 @@ class _CalculatorState extends State<Calculator> {
                             backSpaceButton(),
                             operatorButton(Operator.sum),
                             operatorButton(Operator.sub),
-                            operatorButton(Operator.mult),
-                            operatorButton(Operator.div),
+                            operatorButton(Operator.mult, Xo: 'x'),
+                            operatorButton(Operator.div, Xo: '÷'),
                           ],
                         ),
                       ),
@@ -226,7 +226,7 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  Widget operatorButton(Operator operator) {
+  Widget operatorButton(Operator operator, {String? Xo}) {
     return Container(
       margin: EdgeInsets.all(3),
       height: 70,
@@ -240,7 +240,7 @@ class _CalculatorState extends State<Calculator> {
         },
         child: Container(
           child: Text(
-            operatorIcon(operator),
+            Xo ?? operatorIcon(operator),
             style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,

@@ -10,7 +10,10 @@ void main() async {
   List<String> passEquation = ['0', '0', '0'];
 
   var sharedpreferences = await SharedPreferences.getInstance();
-  sharedpreferences.setStringList('passEquation', passEquation);
+  print(sharedpreferences.getStringList('passEquation'));
+
+  sharedpreferences.getStringList('passEquation') ??
+      sharedpreferences.setStringList('passEquation', passEquation);
 
   runApp(EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],
