@@ -11,30 +11,54 @@ class intro_Screen extends StatelessWidget {
 
   TextEditingController operand3_controller = TextEditingController();
 
-  PageViewModel page_1 = PageViewModel(
-    title: '',
-    body: "page_1_body".tr(),
-    image: Container(
-      margin: const EdgeInsets.only(top: 20),
-      child: Image.asset(
-        'assets/images/introPageOne.png',
+  page_1(String body) {
+    PageViewModel page_1 = PageViewModel(
+      title: '',
+      bodyWidget: Text(
+        body,
+        style: TextStyle(fontSize: 22),
+        textAlign: TextAlign.center,
       ),
-    ),
-  );
-  PageViewModel page_2 = PageViewModel(
-      title: '',
-      body: "page_2_body".tr(),
       image: Container(
         margin: const EdgeInsets.only(top: 20),
-        child: Image.asset('assets/images/introPageTwo.png'),
-      ));
-  PageViewModel page_3 = PageViewModel(
-      title: '',
-      body: "page_3_body".tr(),
-      image: Container(
-        margin: const EdgeInsets.only(top: 20),
-        child: Image.asset('assets/images/introPageThree.png'),
-      ));
+        child: Image.asset(
+          'assets/images/introPageOne.png',
+        ),
+      ),
+    );
+    return page_1;
+  }
+
+  page_2(String body) {
+    PageViewModel page_2 = PageViewModel(
+        title: '',
+        bodyWidget: Text(
+          '${"page_2_body".tr()}',
+          style: TextStyle(fontSize: 18),
+          textAlign: TextAlign.center,
+        ),
+        image: Container(
+          margin: const EdgeInsets.only(top: 20),
+          child: Image.asset('assets/images/introPageTwo.png'),
+        ));
+    return page_2;
+  }
+
+  page_3(String body) {
+    PageViewModel page_3 = PageViewModel(
+        title: '',
+        bodyWidget: Text(
+          body,
+          style: TextStyle(fontSize: 18),
+          textAlign: TextAlign.center,
+        ),
+        image: Container(
+          margin: const EdgeInsets.only(top: 20),
+          child: Image.asset('assets/images/introPageThree.png'),
+        ));
+    return page_3;
+  }
+
   page_4(
     List<TextEditingController> Controllers,
     double screenheight,
@@ -101,9 +125,9 @@ class intro_Screen extends StatelessWidget {
           child: Text("Done"),
         ),
         pages: [
-          page_1,
-          page_2,
-          page_3,
+          page_1("page_1_body".tr()),
+          page_2("page_2_body".tr()),
+          page_3("page_3_body".tr()),
           page_4(
               [operand1_controller, operand2_controller, operand3_controller],
               screenheight),
