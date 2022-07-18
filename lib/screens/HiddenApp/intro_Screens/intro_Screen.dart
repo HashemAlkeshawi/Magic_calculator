@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:magic_calculator/screens/calculator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class intro_Screen extends StatelessWidget {
@@ -34,16 +35,32 @@ class intro_Screen extends StatelessWidget {
         margin: const EdgeInsets.only(top: 20),
         child: Image.asset('assets/images/introPageThree.png'),
       ));
-  page_4(List<TextEditingController> Controllers) {
+  page_4(
+    List<TextEditingController> Controllers,
+    double screenheight,
+  ) {
     PageViewModel page_4 = PageViewModel(
-      title: '',
+      useScrollView: true,
+      titleWidget: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+        child: Text(
+          "setEquation".tr(),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       bodyWidget: setPassEquationWidget(
         Controllers,
       ), // "page_3_body".tr(),
       image: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Text(
-          "${'page_4_rule_1'.tr()}  \n ${'page_4_rule_1'.tr()} \n ${'page_4_rule_1'.tr()}\n ${'page_4_rule_1'.tr()}  \n ${'page_4_rule_1'.tr()}",
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child: SizedBox(
+          height: screenheight / 1.2,
+          child: Text(
+            "${'page_4_rule_1'.tr()}  \n${'page_4_rule_2'.tr()} \n${'page_4_rule_3'.tr()}\n${'page_4_rule_4'.tr()}  \n${'page_4_rule_5'.tr()}",
+            style: TextStyle(fontSize: 13),
+          ),
         ),
       ),
     );
@@ -73,7 +90,10 @@ class intro_Screen extends StatelessWidget {
           sharedPreferences.setStringList('passEquation', equation);
           ScaffoldMessenger.of(context).showSnackBar(Snackbar());
 
-          Navigator.of(context).pop();
+          sharedPreferences.setBool('Opened', true);
+
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => Magic_calculator()));
           print("Done");
         },
         done: Padding(
@@ -85,7 +105,8 @@ class intro_Screen extends StatelessWidget {
           page_2,
           page_3,
           page_4(
-              [operand1_controller, operand2_controller, operand3_controller]),
+              [operand1_controller, operand2_controller, operand3_controller],
+              screenheight),
         ],
       ),
     );
@@ -98,15 +119,6 @@ setPassEquationWidget(List<TextEditingController> controllers) {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-          child: Text(
-            "setEquation".tr(),
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Row(

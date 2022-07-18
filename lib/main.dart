@@ -19,10 +19,12 @@ void main() async {
       supportedLocales: [Locale('en'), Locale('ar')],
       path: 'assets/langs',
       fallbackLocale: Locale('en'),
-      child: App()));
+      child: App(sharedpreferences)));
 }
 
 class App extends StatelessWidget {
+  SharedPreferences sp;
+  App(this.sp);
   // ThemeData? theme = ThemeData.light();
   // changeTheme() {
   //   theme == ThemeData.dark()
@@ -39,7 +41,7 @@ class App extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      home: intro_Screen(), // Magic_calculator(),
+      home: sp.getBool('Opened') == null ? intro_Screen() : Magic_calculator(),
     );
   }
 }
