@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:magic_calculator/screens/HiddenApp/Settings.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/HiddenApp/home.dart';
@@ -204,8 +205,8 @@ class _CalculatorState extends State<Calculator> {
   Widget nomberButton(dynamic nomber) {
     return Container(
       margin: EdgeInsets.all(3),
-      height: 70,
-      width: 80,
+      height: 20.w,
+      width: 12.h,
       child: ElevatedButton(
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Color(0xff0EC0F7))),

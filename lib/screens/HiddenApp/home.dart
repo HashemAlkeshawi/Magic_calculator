@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:magic_calculator/data/JSON_FILS/ToDo_JSON.dart';
 import 'package:magic_calculator/screens/HiddenApp/Settings.dart';
 
@@ -39,7 +38,7 @@ class Home extends StatelessWidget {
                   journals,
                   Icon(
                     Icons.book_outlined,
-                    size: 35,
+                    size: 60,
                   )),
             ),
             InkWell(
@@ -52,7 +51,7 @@ class Home extends StatelessWidget {
                   notes,
                   Icon(
                     Icons.note_alt_outlined,
-                    size: 35,
+                    size: 60,
                   )),
             ),
             InkWell(
@@ -65,7 +64,7 @@ class Home extends StatelessWidget {
                   tasks,
                   Icon(
                     Icons.checklist,
-                    size: 35,
+                    size: 60,
                   )),
             ),
           ],
@@ -97,19 +96,18 @@ class Home extends StatelessWidget {
               icon,
             ],
           ),
-          Text(map['desc']),
           Row(
             children: [
               Text(
-                "Last modify: ",
+                "last modify".tr(),
                 style: TextStyle(fontSize: 11),
               ),
               Text(
                 DateFormat.yMMMMEEEEd().format(map['date']),
                 style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.blue[900],
-                    shadows: [Shadow(color: Colors.white, blurRadius: 1)]),
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),

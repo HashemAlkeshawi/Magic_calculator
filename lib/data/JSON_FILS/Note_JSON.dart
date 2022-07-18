@@ -6,11 +6,9 @@ import 'package:magic_calculator/screens/HiddenApp/notes_modul/note.dart';
 import '../dataBase/DataBase.dart';
 
 Map<String, dynamic> notes = {
-  'name': 'Note',
-  'date': DateTime.now(),
+  'name': 'Notes',
+  'date': DateTime(0),
   'color': const Color(0xff82E0C8),
-  'desc':
-      'process information.know what to prioritize.learn more about a topic.Improve your organizational skills'
 };
 
 List<Note> noteList = [];

@@ -36,6 +36,8 @@ class Add_Note extends StatelessWidget {
           if (headingText.isEmpty && contentText.isEmpty) {
             Navigator.of(context).pop();
           } else {
+            notes['date'] = DateTime.now();
+
             Note note = Note(headingText, contentText, DateTime.now());
             magicDataBase().addData(table: Tables.notes, app: note);
             Navigator.of(context).pop();

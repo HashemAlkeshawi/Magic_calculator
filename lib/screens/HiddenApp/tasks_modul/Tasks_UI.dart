@@ -142,8 +142,11 @@ class _Tasks_UIState extends State<Tasks_UI> {
                 onTap: () {
                   String taskString = controller.text;
                   taskString.isNotEmpty
-                      ? magicDataBase()
-                          .addData(table: Tables.tasks, app: Task(taskString))
+                      ? {
+                          magicDataBase().addData(
+                              table: Tables.tasks, app: Task(taskString)),
+                          tasks['date'] = DateTime.now()
+                        }
                       : {};
 
                   Navigator.of(context).pop();

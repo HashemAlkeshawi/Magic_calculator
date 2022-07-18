@@ -122,7 +122,7 @@ class intro_Screen extends StatelessWidget {
         },
         done: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12),
-          child: Text("Done"),
+          child: Text("Done".tr()),
         ),
         pages: [
           page_1("page_1_body".tr()),

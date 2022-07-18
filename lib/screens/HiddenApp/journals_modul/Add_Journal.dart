@@ -37,6 +37,7 @@ class Add_Journal extends StatelessWidget {
           if (headingText.isEmpty && contentText.isEmpty) {
             Navigator.of(context).pop();
           } else {
+            journals['date'] = DateTime.now();
             Journal journal = Journal(headingText, contentText, DateTime.now());
             magicDataBase().addData(table: Tables.journals, app: journal);
             Navigator.of(context).pop();

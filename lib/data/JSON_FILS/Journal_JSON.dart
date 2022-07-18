@@ -5,10 +5,8 @@ import '../dataClasses/Journals.dart';
 
 Map<String, dynamic> journals = {
   'name': 'Journal',
-  'date': DateTime.now(),
+  'date': DateTime(0),
   'color': const Color(0xffFF7276),
-  'desc':
-      'keep a record of your personal thoughts, feelings, insights, and more.'
 };
 
 List<Journal> JournalList = [];

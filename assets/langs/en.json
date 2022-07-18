@@ -49,6 +49,7 @@
     "page_4_rule_2" : "You have to follow the form {Number, operation, Number}",
     "page_4_rule_3" : "The numbers must be positive, may include decimal point",
     "page_4_rule_4" : "The Sign must be one of the four operations {+ , - , / , * }",
-    "page_4_rule_5" : "You can always open settings by enter three zeros..  '000'"
-
+    "page_4_rule_5" : "You can always open settings by enter three zeros..  '000'",
+    "Done" : "Done",
+    "last modify" : "Last Modify: "
 }

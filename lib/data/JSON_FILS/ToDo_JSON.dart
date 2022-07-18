@@ -1,15 +1,15 @@
 import 'dart:collection';
 import 'dart:ui';
 
+import 'package:easy_localization/easy_localization.dart';
+
 import '../dataBase/DataBase.dart';
 import '../dataClasses/Todos.dart';
 
 Map<String, dynamic> tasks = {
   'name': 'To-Do',
-  'date': DateTime.now(),
+  'date': DateTime(0),
   'color': const Color(0xff8E8BFF),
-  'desc':
-      'Make sure that your tasks are written down all in one place so you don\'t forget anything important.',
 };
 
 List<Task> TasksList = [];
