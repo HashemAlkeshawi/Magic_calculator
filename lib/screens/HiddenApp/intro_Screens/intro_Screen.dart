@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:magic_calculator/screens/calculator.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class intro_Screen extends StatelessWidget {
@@ -16,7 +17,7 @@ class intro_Screen extends StatelessWidget {
       title: '',
       bodyWidget: Text(
         body,
-        style: TextStyle(fontSize: 22),
+        style: TextStyle(fontSize: 21.sp),
         textAlign: TextAlign.center,
       ),
       image: Container(
@@ -34,7 +35,7 @@ class intro_Screen extends StatelessWidget {
         title: '',
         bodyWidget: Text(
           '${"page_2_body".tr()}',
-          style: TextStyle(fontSize: 18),
+          style: TextStyle(fontSize: 20.sp),
           textAlign: TextAlign.center,
         ),
         image: Container(
@@ -49,7 +50,7 @@ class intro_Screen extends StatelessWidget {
         title: '',
         bodyWidget: Text(
           body,
-          style: TextStyle(fontSize: 18),
+          style: TextStyle(fontSize: 20.sp),
           textAlign: TextAlign.center,
         ),
         image: Container(
@@ -76,14 +77,16 @@ class intro_Screen extends StatelessWidget {
       ),
       bodyWidget: setPassEquationWidget(
         Controllers,
-      ), // "page_3_body".tr(),
+      ),
       image: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: SizedBox(
           height: screenheight / 1.2,
-          child: Text(
-            "${'page_4_rule_1'.tr()}  \n${'page_4_rule_2'.tr()} \n${'page_4_rule_3'.tr()}\n${'page_4_rule_4'.tr()}  \n${'page_4_rule_5'.tr()}",
-            style: TextStyle(fontSize: 13),
+          child: Center(
+            child: Text(
+              "${'page_4_rule_1'.tr()}  \n${'page_4_rule_2'.tr()} \n${'page_4_rule_3'.tr()}\n${'page_4_rule_4'.tr()}  \n${'page_4_rule_5'.tr()}",
+              style: TextStyle(fontSize: 16.sp),
+            ),
           ),
         ),
       ),
@@ -122,7 +125,10 @@ class intro_Screen extends StatelessWidget {
         },
         done: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12),
-          child: Text("Done".tr()),
+          child: Text(
+            "Done".tr(),
+            style: TextStyle(fontSize: 20.sp),
+          ),
         ),
         pages: [
           page_1("page_1_body".tr()),
@@ -167,7 +173,7 @@ setPassEquationWidget(List<TextEditingController> controllers) {
                     child: Text(
                       "First Number".tr(),
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 14.sp,
                       ),
                     ),
                   ),
@@ -192,7 +198,7 @@ setPassEquationWidget(List<TextEditingController> controllers) {
                     child: Text(
                       "Sign".tr(),
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 14.sp,
                       ),
                     ),
                   ),
@@ -217,7 +223,7 @@ setPassEquationWidget(List<TextEditingController> controllers) {
                     child: Text(
                       "Second Number".tr(),
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 14.sp,
                       ),
                     ),
                   ),

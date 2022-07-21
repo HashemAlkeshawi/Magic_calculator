@@ -37,7 +37,7 @@ class _CalculatorState extends State<Calculator> {
                   alignment: Alignment.center,
                   width: double.infinity,
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 45),
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 45),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey, width: 1),
                     boxShadow: [
@@ -64,7 +64,7 @@ class _CalculatorState extends State<Calculator> {
                           children: [
                             Container(
                               margin: EdgeInsets.all(3),
-                              height: 60,
+                              height: 10.h,
                               child: ElevatedButton(
                                 style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all(
@@ -173,8 +173,8 @@ class _CalculatorState extends State<Calculator> {
   Widget backSpaceButton() {
     return Container(
       margin: EdgeInsets.all(3),
-      height: 60,
-      width: 80,
+      height: 10.h,
+      width: 22.w,
       child: ElevatedButton(
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Color(0xff945EDB))),
@@ -205,8 +205,8 @@ class _CalculatorState extends State<Calculator> {
   Widget nomberButton(dynamic nomber) {
     return Container(
       margin: EdgeInsets.all(3),
-      height: 20.w,
-      width: 12.h,
+      height: 13.h,
+      width: 22.w,
       child: ElevatedButton(
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Color(0xff0EC0F7))),
@@ -230,8 +230,8 @@ class _CalculatorState extends State<Calculator> {
   Widget operatorButton(Operator operator, {String? Xo}) {
     return Container(
       margin: EdgeInsets.all(3),
-      height: 70,
-      width: 80,
+      height: 13.h,
+      width: 22.w,
       child: ElevatedButton(
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Color(0xff945EDB))),
@@ -301,8 +301,8 @@ class _CalculatorState extends State<Calculator> {
   Widget equalButton() {
     return Container(
       margin: EdgeInsets.all(3),
-      height: 70,
-      width: 80,
+      height: 13.h,
+      width: 22.w,
       child: ElevatedButton(
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Color(0xff0BB300))),

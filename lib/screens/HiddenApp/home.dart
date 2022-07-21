@@ -5,6 +5,7 @@ import 'package:magic_calculator/screens/HiddenApp/Settings.dart';
 
 import 'package:magic_calculator/screens/HiddenApp/journals_modul/Journals_UI.dart';
 import 'package:magic_calculator/screens/HiddenApp/tasks_modul/Tasks_UI.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../data/JSON_FILS/Journal_JSON.dart';
 import '../../data/JSON_FILS/Note_JSON.dart';
 import 'notes_modul/Notes_UI.dart';
@@ -38,7 +39,7 @@ class Home extends StatelessWidget {
                   journals,
                   Icon(
                     Icons.book_outlined,
-                    size: 60,
+                    size: 17.w,
                   )),
             ),
             InkWell(
@@ -51,7 +52,7 @@ class Home extends StatelessWidget {
                   notes,
                   Icon(
                     Icons.note_alt_outlined,
-                    size: 60,
+                    size: 17.w,
                   )),
             ),
             InkWell(
@@ -64,7 +65,7 @@ class Home extends StatelessWidget {
                   tasks,
                   Icon(
                     Icons.checklist,
-                    size: 60,
+                    size: 17.w,
                   )),
             ),
           ],
@@ -73,7 +74,7 @@ class Home extends StatelessWidget {
 
   Widget homeItem(Map<String, dynamic> map, Icon icon) {
     return Container(
-      height: 180,
+      height: 28.h,
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       margin: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
       decoration: BoxDecoration(
@@ -90,7 +91,7 @@ class Home extends StatelessWidget {
             children: [
               Text(
                 '${map['name']}'.tr(),
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
               ),
               Spacer(),
               icon,
@@ -100,12 +101,14 @@ class Home extends StatelessWidget {
             children: [
               Text(
                 "last modify".tr(),
-                style: TextStyle(fontSize: 11),
+                style: TextStyle(fontSize: 16.sp),
               ),
               Text(
-                DateFormat.yMMMMEEEEd().format(map['date']),
+                map['date'] == DateTime(0)
+                    ? 'Never'
+                    : DateFormat.yMMMMEEEEd().format(map['date']),
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
