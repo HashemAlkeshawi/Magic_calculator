@@ -6,4 +6,8 @@ But, when the user enters an equation he set it previously a hidden app opens.
 the hidden app enables the user to write journals, take notes, and set a To-Do list in a safe secret place!
 
 ![alt text](screenShots/Home.png)
-
+![alt text](screenShots/Change PassEquation.png)
+![alt text](screenShots/Notes.png)
+![alt text](screenShots/Add note.png)
+![alt text](screenShots/Add Task.png)
+![alt text](screenShots/Settings.png)
