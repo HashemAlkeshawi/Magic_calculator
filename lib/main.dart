@@ -44,7 +44,7 @@ class App extends StatelessWidget {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           debugShowCheckedModeBanner: false,
-          home: sp.getBool('Opened') == null
+          home: sp.getBool('Opened_') == null
               ? intro_Screen()
               : Magic_calculator(),
         );
